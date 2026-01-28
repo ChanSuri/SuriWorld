@@ -1,3 +1,7 @@
+/* =========================
+   Global Reset & Base
+========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -15,72 +19,77 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 顶部导航背景 */
+
+/* =========================
+   Navbar Layout & Hero
+========================= */
+
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
   width: 100%;
-  height: 200px; /* 根据你的长图高度调整 */
-  background-image: url("../assets/images/profile.png"); /* 替换成你的图片路径 */
-  background-size: cover;        /* 图片铺满 */
-  background-position: center;   /* 居中显示 */
-  background-repeat: no-repeat;
-  
+  height: 200px;
+
   display: flex;
-  justify-content: space-between; /* 左右分布标题和按钮 */
-  align-items: center;            /* 垂直居中 */
-  padding: 0 50px;                /* 左右间距，可调整 */
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 50px;
+
+  background-image: url("../assets/images/profile.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: 100;
+  overflow: hidden;
+}
+
+/* 遮罩层 */
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+
+/* navbar 内元素浮到遮罩之上 */
+.navbar > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* 导航标题 */
 .nav-title {
   font-size: 5rem;
-  color: white;
-  font-weight: bold;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
 }
 
-/* 按钮 */
-.button {
-  text-decoration: none;
-  background-color: rgba(255, 255, 255, 0.5); /* 半透明背景 */
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-}
 
-.button:hover {
-  background-color: rgba(0,0,0,0.7);
-}
+/* =========================
+   Button Visual Override
+   （不碰 utilities 的结构）
+========================= */
 
-/* 响应式 */
-@media only screen and (max-width: 800px) {
-  .navbar {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
-    gap: 10px;
-  }
-  .nav-title {
-    font-size: 1.5rem;
-  }
-}
-
-.navbar::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.3); /* 半透明黑遮罩 */
-  z-index: 0;
-}
-
-.navbar .nav-title,
 .navbar .button {
-  position: relative;
-  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.25);
+  color: white;
+  border-color: white;
+}
+
+.navbar .button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 
-
-/* Main Page Layout */
+/* =========================
+   Main Page Layout
+========================= */
 
 #main-content {
   margin: 225px 425px;
@@ -90,19 +99,21 @@ body {
 }
 
 
-/* Portfolio Header */
+/* =========================
+   Portfolio Header
+========================= */
 
 #portfolio-header {
   display: flex;
-  gap: 20px;
   align-items: center;
+  gap: 20px;
 }
 
 #portfolio-header-image-container {
+  flex-basis: 50%;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex-basis: 50%;
 }
 
 .portfolio-header-image {
@@ -111,16 +122,16 @@ body {
 }
 
 #portfolio-header-text-container {
+  flex-basis: 50%;
   display: flex;
   flex-direction: column;
   gap: 34px;
-  flex-basis: 50%;
 }
 
 
-
-
-/* About Section */
+/* =========================
+   About Section
+========================= */
 
 #about-section {
   display: flex;
@@ -135,9 +146,9 @@ body {
 }
 
 
-
-
-/* Project Section */
+/* =========================
+   Project Section
+========================= */
 
 #my-work-section {
   display: flex;
@@ -147,36 +158,35 @@ body {
 
 .projects-container {
   display: flex;
-  gap: 34px 50px;
   flex-wrap: wrap;
+  gap: 34px 50px;
 }
 
-    /* Project Cards */
+/* Project Card */
+.project-card {
+  max-width: calc((100% - 32px) / 5);
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
 
-    .project-card {
-      max-width: calc((100% - 32px) / 5);
-      display: flex;
-      flex-direction: column;
-      gap: 34px;
-    }
+.project-card-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-    .project-card-text-container {
-      flex-direction: column;
-      display: flex;
-      gap: 16px
-    }
-
-    .project-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      object-position: center;
-    }
-
+.project-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+}
 
 
-
-/* Project Pages */
+/* =========================
+   Project Pages
+========================= */
 
 #project-header {
   display: flex;
@@ -201,60 +211,76 @@ body {
   gap: 34px;
 }
 
-    /* Project Gallery */
 
-    #project-gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+/* Project Gallery */
 
-    .project-gallery-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 34px 16px;
-    }
+#project-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-    .gallery-image-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+.project-gallery-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 34px 16px;
+}
 
-    .gallery-image-container.half-width {
-      width: calc((100% - 16px) / 2);
-    }
+.gallery-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-    .gallery-image {
-      width: 100%;
-      height: auto;
-    }
+.gallery-image-container.half-width {
+  width: calc((100% - 16px) / 2);
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+}
 
 
-/* Extra Extra large devices (large laptops and desktops, 1200px and below) */
-@media only screen and (max-width: 1600px) {
+/* =========================
+   Responsive Layout
+========================= */
+
+/* ≤1600px */
+@media (max-width: 1600px) {
   #main-content {
     margin: 225px 275px;
   }
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and below) */
-@media only screen and (max-width: 1200px) {
+/* ≤1200px */
+@media (max-width: 1200px) {
   #main-content {
     margin: 225px 175px;
   }
 }
 
-/* Large devices (laptops/desktops, 1000px and below) */
-@media only screen and (max-width: 1000px) {
+/* ≤1000px */
+@media (max-width: 1000px) {
   #main-content {
     margin: 225px 75px;
   }
 }
 
-/* Small devices (portrait tablets and large phones, 800px and below) */
-@media only screen and (max-width: 800px) {
+/* ≤800px */
+@media (max-width: 800px) {
+  .navbar {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-title {
+    font-size: 2rem;
+  }
+
   #main-content {
     margin: 150px 50px;
   }
@@ -268,8 +294,8 @@ body {
   }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and below) */
-@media only screen and (max-width: 600px) {
+/* ≤600px */
+@media (max-width: 600px) {
   #main-content {
     margin: 125px 20px;
   }
@@ -278,6 +304,3 @@ body {
     max-width: 100%;
   }
 }
-
-
-
