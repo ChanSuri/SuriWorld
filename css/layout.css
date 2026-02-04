@@ -195,7 +195,7 @@ body {
 }
 
 .project-header-image {
-  width: 100%;
+  width: 50%;
   height: auto;
 }
 
@@ -220,12 +220,14 @@ body {
   gap: 16px;
 }
 
+/* 外层容器 */
 .project-gallery-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 34px 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 三列布局 */
+  gap: 34px 16px;                        /* 行间距 24px，列间距 16px */
 }
 
+/* 图片容器 */
 .gallery-image-container {
   width: 100%;
   display: flex;
@@ -233,13 +235,26 @@ body {
   gap: 10px;
 }
 
-.gallery-image-container.half-width {
-  width: calc((100% - 16px) / 2);
-}
-
+/* 图片本身 */
 .gallery-image {
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 3;    /* 高度自动跟随宽度 */
+  object-fit: cover;
+  object-position: center;
+  border-radius: 6px;
+}
+
+/* 响应式：tablet 两列，手机一列 */
+@media (max-width: 1000px) {
+  .project-gallery-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .project-gallery-content {
+    grid-template-columns: 1fr;
+  }
 }
 
 
