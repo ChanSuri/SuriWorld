@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/typography.css">
     <link rel="stylesheet" href="../css/utilities.css">
-    <link rel="stylesheet" href="../css/visuals.css"> <!-- 新抽离的 CSS 文件 -->
+    <link rel="stylesheet" href="../css/visuals.css"> 
 
     <script defer src="../js/script.js"></script>
   </head>
@@ -42,6 +42,9 @@
       <div class="continent-tabs">
         <button class="tab-btn" onclick="switchContinent('europe')">Europe</button>
         <button class="tab-btn" onclick="switchContinent('asia')">Asia</button>
+        <button class="tab-btn" onclick="switchContinent('america')">America</button>
+        <button class="tab-btn" onclick="switchContinent('africa')">Africa</button>
+        <button class="tab-btn" onclick="switchContinent('oceania')">Oceania</button>
         <button class="tab-btn" onclick="switchContinent('videos')">🎬 Video Stories</button>
       </div>
 
@@ -65,7 +68,7 @@
             <span class="photo-count-badge">1 / 3</span>
           </div>
           <div class="card-info">
-            <h4>🇮🇹 Italy (Turin & Alps)</h4>
+            <h4>🇮🇹 Italy</h4>
             <p>Golden hour in Turin and breathtaking mountain passes of northern Italy.</p>
           </div>
         </div>
@@ -85,6 +88,7 @@
             <p>Nordic winter landscapes and academic moments during my exchange term at Aalto University.</p>
           </div>
         </div>
+        
 
         <!-- 卡片 3: 中国 (China) -->
         <div class="country-card" data-continent="asia" data-country="china">
@@ -125,11 +129,11 @@
         
         <div class="video-card">
           <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" title="Torino Vlog" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/94bfLq0HQ5g" title="Paris Olympic Period" allowfullscreen></iframe>
           </div>
           <div class="card-info">
-            <h4>Alpine Explorations</h4>
-            <p>Cinematic travel vlog exploring northern Italian landscapes and lakes.</p>
+            <h4>Paris Olympic Period</h4>
+            <p>Paris Olympic Period</p>
           </div>
         </div>
 
@@ -158,8 +162,11 @@
     <!-- 交互逻辑 JavaScript 脚本 -->
     <script>
       const countriesByContinent = {
-        'europe': [ 'Italy', 'Finland'],
-        'asia': ['China', 'Singapore']
+        'europe': [ 'Italy', 'Finland', 'France', 'Germany' , 'Spain', 'Switzerland' , 'Norway', 'Sweden', 'Netherlands', 'Belgium' , 'Austria', 'Portugal', 'Greece', 'Czech Republic', 'UK', 'Hungary', 'Denmark','Estonia', 'Iceland', 'Luxembourg', 'Malta', 'Monaco',  'San Marino'],
+        'asia': ['China', 'Singapore', 'Japan', 'Thailand', 'Indonesia'],
+        'america': ['USA'],
+        'africa': ['Morocco', 'Egypt'],
+        'oceania': ['Australia', 'New Zealand']
       };
 
       let currentContinent = 'all';
