@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/images/1311.png" />
+    <title>Suri Chen | Visuals & Lens</title>
+    <meta name="description" content="A modern photography and travel gallery by Suri Chen.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 引入外部样式表 -->
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    <link rel="stylesheet" href="../css/visuals.css"> <!-- 新抽离的 CSS 文件 -->
+
+    <script defer src="../js/script.js"></script>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <span class="nav-title">Suri Chen</span>
+      </a>
+      <a class="button" href="mailto:surichan.study@gmail.com">
+        <span class="button-text">Contact Me</span>
+      </a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content">
+
+      <!-- HEADER INTRO -->
+      <div id="project-header">
+        <div class="main-title">Visuals & Lens</div>
+        <div class="body-text">
+          A visual collection of moments, lights, and stories captured across continents. Explore by region or watch video stories below.
+        </div>
+      </div>
+
+      <!-- TIER 1: 大洲 & 视频 顶级标签页 -->
+      <div class="continent-tabs">
+        <button class="tab-btn" onclick="switchContinent('europe')">Europe</button>
+        <button class="tab-btn" onclick="switchContinent('asia')">Asia</button>
+        <button class="tab-btn" onclick="switchContinent('videos')">🎬 Video Stories</button>
+      </div>
+
+      <!-- TIER 2: 国家二级筛选芯片 -->
+      <div class="country-filters" id="country-filters-container">
+        <!-- JS 会动态填充国家按钮 -->
+      </div>
+
+      <!-- SECTION 1: 照片画廊网格 (包含国家动态轮播卡片) -->
+      <div id="photo-section" class="gallery-grid">
+        
+        <!-- 卡片 1: 意大利 (Italy) -->
+        <div class="country-card" data-continent="europe" data-country="italy">
+          <div class="slider-container" id="slider-italy">
+            <img class="slide-img active" src="../assets/images/turin-1.jpg" alt="Turin Street">
+            <img class="slide-img" src="../assets/images/turin-2.jpg" alt="Turin Mole">
+            <img class="slide-img" src="../assets/images/alps-1.jpg" alt="Italian Alps">
+            
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-italy', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-italy', 1)">›</button>
+            <span class="photo-count-badge">1 / 3</span>
+          </div>
+          <div class="card-info">
+            <h4>🇮🇹 Italy (Turin & Alps)</h4>
+            <p>Golden hour in Turin and breathtaking mountain passes of northern Italy.</p>
+          </div>
+        </div>
+
+        <!-- 卡片 2: 芬兰 (Finland) -->
+        <div class="country-card" data-continent="europe" data-country="finland">
+          <div class="slider-container" id="slider-finland">
+            <img class="slide-img active" src="../assets/images/helsinki-1.jpg" alt="Helsinki">
+            <img class="slide-img" src="../assets/images/finland-snow.jpg" alt="Lapland">
+            
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-finland', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-finland', 1)">›</button>
+            <span class="photo-count-badge">1 / 2</span>
+          </div>
+          <div class="card-info">
+            <h4>🇫🇮 Finland</h4>
+            <p>Nordic winter landscapes and academic moments during my exchange term at Aalto University.</p>
+          </div>
+        </div>
+
+        <!-- 卡片 3: 中国 (China) -->
+        <div class="country-card" data-continent="asia" data-country="china">
+          <div class="slider-container" id="slider-china">
+            <img class="slide-img active" src="../assets/images/nanjing-1.jpg" alt="Nanjing">
+            <img class="slide-img" src="../assets/images/changchun-1.jpg" alt="Changchun">
+            
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-china', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-china', 1)">›</button>
+            <span class="photo-count-badge">1 / 2</span>
+          </div>
+          <div class="card-info">
+            <h4>🇨🇳 China (Nanjing & Changchun)</h4>
+            <p>The rhythm of ancient heritage and snow-capped winter sports venues.</p>
+          </div>
+        </div>
+
+        <!-- 卡片 4: 新加坡 (Singapore) -->
+        <div class="country-card" data-continent="asia" data-country="singapore">
+          <div class="slider-container" id="slider-singapore">
+            <img class="slide-img active" src="../assets/images/singapore-1.jpg" alt="NTU Campus">
+            <img class="slide-img" src="../assets/images/singapore-2.jpg" alt="Marina Bay">
+            
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-singapore', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-singapore', 1)">›</button>
+            <span class="photo-count-badge">1 / 2</span>
+          </div>
+          <div class="card-info">
+            <h4>🇸🇬 Singapore</h4>
+            <p>Futuristic architecture and lush botanical gardens during my NTU research stay.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SECTION 2: 独立视频模块 -->
+      <div id="video-section" class="video-grid" style="display: none;">
+        
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" title="Torino Vlog" allowfullscreen></iframe>
+          </div>
+          <div class="card-info">
+            <h4>Alpine Explorations</h4>
+            <p>Cinematic travel vlog exploring northern Italian landscapes and lakes.</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" title="Sports Moments" allowfullscreen></iframe>
+          </div>
+          <div class="card-info">
+            <h4>Torch Relay & Sports Highlights</h4>
+            <p>Behind the scenes at the FISU Flame Lighting Ceremony in Turin.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <a class="icon-link" target="_blank" href="https://www.instagram.com/sssuriiii/"><img src="../assets/icons/instagram.svg" class="footer-icon" alt="GitHub"/></a>
+      <a class="icon-link" target="_blank" href="https://github.com/ChanSuri"><img src="../assets/icons/github.svg" class="footer-icon" alt="GitHub"/></a>
+      <a class="icon-link" target="_blank" href="https://linkedin.com"><img src="../assets/icons/linkedin.svg" class="footer-icon" alt="LinkedIn"/></a>
+      <a class="icon-link" href="mailto:surichan.study@gmail.com"><img src="../assets/icons/mail.svg" class="footer-icon" alt="Mail"/></a>
+    </div>
+
+    <!-- 交互逻辑 JavaScript 脚本 -->
+    <script>
+      const countriesByContinent = {
+        'europe': [ 'Italy', 'Finland'],
+        'asia': ['China', 'Singapore']
+      };
+
+      let currentContinent = 'all';
+      let currentCountry = 'all';
+
+      renderCountryChips('all');
+
+      function switchContinent(continent) {
+        currentContinent = continent;
+        
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        const photoSection = document.getElementById('photo-section');
+        const videoSection = document.getElementById('video-section');
+        const countryFilterBox = document.getElementById('country-filters-container');
+
+        if (continent === 'videos') {
+          photoSection.style.display = 'none';
+          countryFilterBox.style.display = 'none';
+          videoSection.style.display = 'grid';
+        } else {
+          photoSection.style.display = 'grid';
+          countryFilterBox.style.display = 'flex';
+          videoSection.style.display = 'none';
+          
+          renderCountryChips(continent);
+          filterPhotoCards();
+        }
+      }
+
+      function renderCountryChips(continent) {
+        const container = document.getElementById('country-filters-container');
+        container.innerHTML = '';
+        currentCountry = 'all';
+
+        const list = countriesByContinent[continent] || [];
+        list.forEach((countryName, index) => {
+          const chip = document.createElement('button');
+          chip.className = `country-chip ${index === 0 ? 'active' : ''}`;
+          chip.textContent = countryName;
+          chip.onclick = (e) => {
+            document.querySelectorAll('.country-chip').forEach(c => c.classList.remove('active'));
+            e.target.classList.add('active');
+            currentCountry = index === 0 ? 'all' : countryName.toLowerCase();
+            filterPhotoCards();
+          };
+          container.appendChild(chip);
+        });
+      }
+
+      function filterPhotoCards() {
+        const cards = document.querySelectorAll('.country-card');
+        cards.forEach(card => {
+          const cardContinent = card.getAttribute('data-continent');
+          const cardCountry = card.getAttribute('data-country');
+
+          const matchesContinent = (currentContinent === 'all' || cardContinent === currentContinent);
+          const matchesCountry = (currentCountry === 'all' || cardCountry === currentCountry);
+
+          if (matchesContinent && matchesCountry) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      function changeSlide(containerId, direction) {
+        const container = document.getElementById(containerId);
+        const images = container.querySelectorAll('.slide-img');
+        const badge = container.querySelector('.photo-count-badge');
+        
+        let activeIndex = 0;
+        images.forEach((img, idx) => {
+          if (img.classList.contains('active')) activeIndex = idx;
+        });
+
+        images[activeIndex].classList.remove('active');
+        
+        let newIndex = activeIndex + direction;
+        if (newIndex >= images.length) newIndex = 0;
+        if (newIndex < 0) newIndex = images.length - 1;
+
+        images[newIndex].classList.add('active');
+        if (badge) badge.textContent = `${newIndex + 1} / ${images.length}`;
+      }
+    </script>
+  </body>
+</html>
