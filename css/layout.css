@@ -194,11 +194,6 @@ body {
   gap: 16px;
 }
 
-.project-header-image {
-  width: 50%;
-  height: auto;
-}
-
 #project-details {
   display: flex;
   flex-direction: column;
@@ -211,6 +206,48 @@ body {
   gap: 34px;
 }
 
+/* =========================
+   Media Row: Video + Image
+========================= */
+
+.media-row-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 400px;
+  margin-top: 24px;
+}
+
+/* Shared image and video styles */
+.media-row-container .project-header-image,
+.media-row-container .project-header-video {
+  display: block;
+  flex: 0 1 auto;
+  min-width: 0;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Responsive: stack vertically on mobile */
+@media (max-width: 800px) {
+  .media-row-container {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    gap: 16px;
+  }
+
+  .media-row-container .project-header-image,
+  .media-row-container .project-header-video {
+    width: 100%;
+    height: auto;
+    flex: none;
+  }
+}
 
 /* Project Gallery */
 
@@ -578,54 +615,5 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-  }
-}
-
-/* =========================
-   Media Row (Fixed Height, Aspect-Width)
-========================= */
-
-.media-row-container {
-  display: flex;
-  gap: 20px; /* 照片与视频之间的间距 */
-  justify-content: flex-start; /* 顶部/左侧对齐，紧凑排列 */
-  align-items: center; /* 垂直居中对齐 */
-  
-  /* 给容器一个固定高度，照片和视频将以此高度为基准缩放 */
-  /* 你可以根据需要调整这个数值 */
-  height: 400px; 
-
-  width: 100%;
-  margin-top: 24px;
-}
-
-/* 强制两者高度均为容器高度，画面比例正确，宽度自适应 */
-.media-row-container .project-header-image,
-.media-row-container .project-header-video {
-  height: 100%;      /* 高度与容器对齐 */
-  width: auto;       /* 宽度随高度自适应缩放 */
-  flex: none;        /* 关键：不让 Flex 伸缩 */
-  
-  /* 确保画面不被拉伸，比例正确。
-     - contain: 完整展示，可能有黑边
-     - cover: 裁切（crop），铺满，更现代化
-     推荐使用 cover。 */
-  object-fit: cover; 
-  
-  border-radius: 8px; /* 优雅的圆角 */
-}
-
-/* 响应式适配：在手机或窄屏下自动变为上下堆叠 */
-@media (max-width: 800px) {
-  .media-row-container {
-    height: auto;    /* 响应式下取消固定高度 */
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .media-row-container .project-header-image,
-  .media-row-container .project-header-video {
-    width: 100%;     /* 变为单列 */
-    height: auto;    /* 高度（长度）变为自适应 */
-    aspect-ratio: auto; /* 响应式下不使用固定比例 */
   }
 }
