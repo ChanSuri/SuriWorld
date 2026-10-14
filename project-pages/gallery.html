@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="icon" href="../assets/images/1311.png" />
-    <title>Suri Chen | Visuals & Lens</title>
+    <link rel="icon" href="../assets/images/p1.png" />
+    <title>Suri's Secret | Visuals & Lens</title>
     <meta name="description" content="A modern photography and travel gallery by Suri Chen.">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -20,7 +20,7 @@
     <!-- NAVBAR -->
     <div class="navbar">
       <a class="nav-title-link" href="../index.html">
-        <span class="nav-title">Suri Chen</span>
+        <span class="nav-title">Suri's Secret</span>
       </a>
       <a class="button" href="mailto:surichan.study@gmail.com">
         <span class="button-text">Contact Me</span>
@@ -32,7 +32,7 @@
 
       <!-- HEADER INTRO -->
       <div id="project-header">
-        <div class="main-title">Visuals & Lens</div>
+        <div class="main-title">Visuals & Lens 📸</div>
         <div class="body-text">
           A visual collection of moments, lights, and stories captured across continents. Explore by region or watch video stories below.
         </div>
@@ -40,6 +40,7 @@
 
       <!-- TIER 1: 大洲 & 视频 顶级标签页 -->
       <div class="continent-tabs">
+        <button class="tab-btn active" onclick="switchContinent('all')">Special Hits</button>
         <button class="tab-btn" onclick="switchContinent('europe')">Europe</button>
         <button class="tab-btn" onclick="switchContinent('asia')">Asia</button>
         <button class="tab-btn" onclick="switchContinent('america')">America</button>
@@ -53,80 +54,162 @@
         <!-- JS 会动态填充国家按钮 -->
       </div>
 
-      <!-- SECTION 1: 照片画廊网格 (包含国家动态轮播卡片) -->
+      <!-- SECTION 1: 照片画廊网格 (按照城市相册集独立展示) -->
       <div id="photo-section" class="gallery-grid">
         
-        <!-- 卡片 1: 意大利 (Italy) -->
+        <!-- ================= ITALY ================= -->
+        
+        <!-- 城市相册 1: Torino (归属于 Europe -> Italy) -->
         <div class="country-card" data-continent="europe" data-country="italy">
-          <div class="slider-container" id="slider-italy">
-            <img class="slide-img active" src="../assets/images/turin-1.jpg" alt="Turin Street">
-            <img class="slide-img" src="../assets/images/turin-2.jpg" alt="Turin Mole">
-            <img class="slide-img" src="../assets/images/alps-1.jpg" alt="Italian Alps">
-            
-            <button class="slider-btn prev-btn" onclick="changeSlide('slider-italy', -1)">‹</button>
-            <button class="slider-btn next-btn" onclick="changeSlide('slider-italy', 1)">›</button>
-            <span class="photo-count-badge">1 / 3</span>
+          <div class="slider-container" id="slider-torino">
+            <img class="slide-img active" src="../assets/gallery/Italy/IMG_6929.jpg" alt="Turin Street">
+            <img class="slide-img" src="../assets/gallery/Italy/IMG_4080.jpg" alt="Top of Alps">
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-torino', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-torino', 1)">›</button>
+            <span class="photo-count-badge">1 / 2</span>
           </div>
           <div class="card-info">
-            <h4>🇮🇹 Italy</h4>
-            <p>Golden hour in Turin and breathtaking mountain passes of northern Italy.</p>
+            <h4>📍 Torino</h4>
+            <p>The city of alpine views, elegant streets, and my university memories.</p>
           </div>
         </div>
 
-        <!-- 卡片 2: 芬兰 (Finland) -->
+        <!-- 城市相册 2: Sicily (归属于 Europe -> Italy) -->
+        <div class="country-card" data-continent="europe" data-country="italy">
+          <div class="slider-container" id="slider-sicily">
+            <img class="slide-img active" src="../assets/gallery/Italy/DSC01680.jpg" alt="ETNA view">
+            <img class="slide-img" src="../assets/gallery/Italy/DJI_0641.jpg" alt="ETNA active volcano">
+            <img class="slide-img" src="../assets/gallery/Italy/DSC01491.JPG" alt="Stromboli Volcano">
+            <img class="slide-img" src="../assets/gallery/Italy/IMG_9231.jpg" alt="Sicily Sunset">
+            <img class="slide-img" src="../assets/gallery/Italy/DSC01737.JPG" alt="Agrigento">
+            <img class="slide-img" src="../assets/gallery/Italy/IMG_4314.jpg" alt="Milazzo sunset">
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-sicily', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-sicily', 1)">›</button>
+            <span class="photo-count-badge">1 / 6</span>
+          </div>
+          <div class="card-info">
+            <h4>📍 Sicily</h4>
+            <p>Volcanoes, crystal coastlines, and breathtaking Mediterranean sunsets.</p>
+          </div>
+        </div>
+
+        <!-- 城市相册 3: Roma (归属于 Europe -> Italy) -->
+        <div class="country-card" data-continent="europe" data-country="italy">
+          <div class="slider-container" id="slider-roma">
+            <img class="slide-img active" src="../assets/gallery/Italy/IMG_3660.jpg" alt="Roman Colosseum">
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-roma', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-roma', 1)">›</button>
+            <span class="photo-count-badge">1 / 2</span>
+          </div>
+          <div class="card-info">
+            <h4>📍 Roma</h4>
+            <p>Step back in time through ancient Roman ruins and historic architecture.</p>
+          </div>
+        </div>
+
+        <!-- 城市相册 4: Napoli (归属于 Europe -> Italy) -->
+        <div class="country-card" data-continent="europe" data-country="italy">
+          <div class="slider-container" id="slider-napoli">
+            <img class="slide-img active" src="../assets/gallery/Italy/IMG_3892.jpg" alt="Napoli">
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-napoli', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-napoli', 1)">›</button>
+            <span class="photo-count-badge">1 / 2</span>
+          </div>
+          <div class="card-info">
+            <h4>📍 Napoli</h4>
+            <p>Vibrant street life, southern coastline, and unforgettable coastal dusks.</p>
+          </div>
+        </div>
+
+        <!-- ================= 芬兰：城市相册集 ================= -->
         <div class="country-card" data-continent="europe" data-country="finland">
-          <div class="slider-container" id="slider-finland">
+          <div class="slider-container" id="slider-helsinki">
             <img class="slide-img active" src="../assets/images/helsinki-1.jpg" alt="Helsinki">
             <img class="slide-img" src="../assets/images/finland-snow.jpg" alt="Lapland">
-            
-            <button class="slider-btn prev-btn" onclick="changeSlide('slider-finland', -1)">‹</button>
-            <button class="slider-btn next-btn" onclick="changeSlide('slider-finland', 1)">›</button>
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-helsinki', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-helsinki', 1)">›</button>
             <span class="photo-count-badge">1 / 2</span>
           </div>
           <div class="card-info">
-            <h4>🇫🇮 Finland</h4>
-            <p>Nordic winter landscapes and academic moments during my exchange term at Aalto University.</p>
+            <h4>📍 Helsinki</h4>
+            <p>Nordic winter wonderlands and design architecture during Aalto exchange.</p>
           </div>
         </div>
-        
 
-        <!-- 卡片 3: 中国 (China) -->
+        <!-- ================= 中国：城市相册集 ================= -->
         <div class="country-card" data-continent="asia" data-country="china">
-          <div class="slider-container" id="slider-china">
+          <div class="slider-container" id="slider-nanjing">
             <img class="slide-img active" src="../assets/images/nanjing-1.jpg" alt="Nanjing">
             <img class="slide-img" src="../assets/images/changchun-1.jpg" alt="Changchun">
-            
-            <button class="slider-btn prev-btn" onclick="changeSlide('slider-china', -1)">‹</button>
-            <button class="slider-btn next-btn" onclick="changeSlide('slider-china', 1)">›</button>
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-nanjing', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-nanjing', 1)">›</button>
             <span class="photo-count-badge">1 / 2</span>
           </div>
           <div class="card-info">
-            <h4>🇨🇳 China (Nanjing & Changchun)</h4>
-            <p>The rhythm of ancient heritage and snow-capped winter sports venues.</p>
+            <h4>📍 Nanjing</h4>
+            <p>Ancient cultural heritage and snow sports venues in winter.</p>
           </div>
         </div>
 
-        <!-- 卡片 4: 新加坡 (Singapore) -->
+        <!-- ================= 新加坡：城市相册集 ================= -->
         <div class="country-card" data-continent="asia" data-country="singapore">
           <div class="slider-container" id="slider-singapore">
-            <img class="slide-img active" src="../assets/images/singapore-1.jpg" alt="NTU Campus">
+            <img class="slide-img active" src="../assets/images/singapore-1.jpg" alt="NTU">
             <img class="slide-img" src="../assets/images/singapore-2.jpg" alt="Marina Bay">
-            
             <button class="slider-btn prev-btn" onclick="changeSlide('slider-singapore', -1)">‹</button>
             <button class="slider-btn next-btn" onclick="changeSlide('slider-singapore', 1)">›</button>
             <span class="photo-count-badge">1 / 2</span>
           </div>
           <div class="card-info">
-            <h4>🇸🇬 Singapore</h4>
-            <p>Futuristic architecture and lush botanical gardens during my NTU research stay.</p>
+            <h4>📍 Singapore</h4>
+            <p>Futuristic gardens and architectural marvels during NTU research.</p>
           </div>
         </div>
+
+        <!-- ================= 美国：城市相册集 ================= -->
+        <div class="country-card" data-continent="america" data-country="usa">
+          <div class="slider-container" id="slider-la">
+            <img class="slide-img active" src="../assets/images/placeholder-usa-1.jpg" alt="Los Angeles">
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-la', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-la', 1)">›</button>
+            <span class="photo-count-badge">1 / 1</span>
+          </div>
+          <div class="card-info">
+            <h4>📍 Los Angeles</h4>
+            <p>Iconic urban landscapes and American road trips.</p>
+          </div>
+        </div>
+        <div class="country-card" data-continent="america" data-country="usa">
+          <div class="slider-container" id="slider-sf">
+            <img class="slide-img active" src="../assets/images/placeholder-usa-1.jpg" alt="San Francisco">
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-sf', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-sf', 1)">›</button>
+            <span class="photo-count-badge">1 / 1</span>
+          </div>
+          <div class="card-info">
+            <h4>📍 San Francisco</h4>
+            <p>Iconic urban landscapes and American road trips.</p>
+          </div>
+        </div>
+
+        <div class="country-card" data-continent="america" data-country="usa">
+          <div class="slider-container" id="slider-sj">
+            <img class="slide-img active" src="../assets/images/placeholder-usa-1.jpg" alt="San Jose">
+            <button class="slider-btn prev-btn" onclick="changeSlide('slider-sj', -1)">‹</button>
+            <button class="slider-btn next-btn" onclick="changeSlide('slider-sj', 1)">›</button>
+            <span class="photo-count-badge">1 / 1</span>
+          </div>
+          <div class="card-info">
+            <h4>📍 San Jose</h4>
+            <p>Iconic urban landscapes and American road trips.</p>
+          </div>
+        </div>
+
 
       </div>
 
       <!-- SECTION 2: 独立视频模块 -->
       <div id="video-section" class="video-grid" style="display: none;">
-        
         <div class="video-card">
           <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/94bfLq0HQ5g" title="Paris Olympic Period" allowfullscreen></iframe>
@@ -136,24 +219,22 @@
             <p>Paris Olympic Period</p>
           </div>
         </div>
-
         <div class="video-card">
           <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" title="Sports Moments" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/94bfLq0HQ5g" title="Sports Moments" allowfullscreen></iframe>
           </div>
           <div class="card-info">
             <h4>Torch Relay & Sports Highlights</h4>
             <p>Behind the scenes at the FISU Flame Lighting Ceremony in Turin.</p>
           </div>
         </div>
-
       </div>
 
     </div>
 
     <!-- FOOTER -->
     <div id="footer">
-      <a class="icon-link" target="_blank" href="https://www.instagram.com/sssuriiii/"><img src="../assets/icons/instagram.svg" class="footer-icon" alt="GitHub"/></a>
+      <a class="icon-link" target="_blank" href="https://www.instagram.com/sssuriiii/"><img src="../assets/icons/instagram.svg" class="footer-icon" alt="Instagram"/></a>
       <a class="icon-link" target="_blank" href="https://github.com/ChanSuri"><img src="../assets/icons/github.svg" class="footer-icon" alt="GitHub"/></a>
       <a class="icon-link" target="_blank" href="https://linkedin.com"><img src="../assets/icons/linkedin.svg" class="footer-icon" alt="LinkedIn"/></a>
       <a class="icon-link" href="mailto:surichan.study@gmail.com"><img src="../assets/icons/mail.svg" class="footer-icon" alt="Mail"/></a>
@@ -162,11 +243,12 @@
     <!-- 交互逻辑 JavaScript 脚本 -->
     <script>
       const countriesByContinent = {
-        'europe': [ 'Italy', 'Finland', 'France', 'Germany' , 'Spain', 'Switzerland' , 'Norway', 'Sweden', 'Netherlands', 'Belgium' , 'Austria', 'Portugal', 'Greece', 'Czech Republic', 'UK', 'Hungary', 'Denmark','Estonia', 'Iceland', 'Luxembourg', 'Malta', 'Monaco',  'San Marino'],
-        'asia': ['China', 'Singapore', 'Japan', 'Thailand', 'Indonesia'],
-        'america': ['USA'],
-        'africa': ['Morocco', 'Egypt'],
-        'oceania': ['Australia', 'New Zealand']
+        'all': ['All Hits', 'Italy', 'China', 'USA'],
+        'europe': ['All Europe', 'Italy', 'Finland', 'France', 'Germany', 'Spain', 'Switzerland','Sweden',  'Austria', 'Portugal',  'Czech Republic', ' United Kingdom', 'Hungary', 'Denmark', 'Estonia', 'Malta', 'Monaco', 'San Marino'],
+        'asia': ['All Asia', 'China', 'Singapore', 'Japan', 'Thailand', 'Indonesia'],
+        'america': ['All America', 'USA', 'Canada', 'Mexico', 'Brazil'],
+        'africa': ['All Africa', 'Morocco', 'Egypt'],
+        'oceania': ['All Oceania', 'Australia', 'New Zealand']
       };
 
       let currentContinent = 'all';
@@ -211,7 +293,8 @@
           chip.onclick = (e) => {
             document.querySelectorAll('.country-chip').forEach(c => c.classList.remove('active'));
             e.target.classList.add('active');
-            currentCountry = index === 0 ? 'all' : countryName.toLowerCase();
+            
+            currentCountry = (index === 0) ? 'all' : countryName.toLowerCase();
             filterPhotoCards();
           };
           container.appendChild(chip);
@@ -224,7 +307,15 @@
           const cardContinent = card.getAttribute('data-continent');
           const cardCountry = card.getAttribute('data-country');
 
-          const matchesContinent = (currentContinent === 'all' || cardContinent === currentContinent);
+          let matchesContinent = false;
+
+          if (currentContinent === 'all') {
+            const specialHitsCountries = ['italy', 'china', 'usa'];
+            matchesContinent = specialHitsCountries.includes(cardCountry);
+          } else {
+            matchesContinent = (cardContinent === currentContinent);
+          }
+
           const matchesCountry = (currentCountry === 'all' || cardCountry === currentCountry);
 
           if (matchesContinent && matchesCountry) {
