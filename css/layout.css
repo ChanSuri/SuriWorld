@@ -620,3 +620,90 @@ body {
     gap: 20px;
   }
 }
+
+/* =========================================================
+   Modern Floating Navigation (Back to Top & Home)
+========================================================= */
+
+/* 悬浮控制组件容器 */
+.floating-nav-container {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+}
+
+/* 通用悬浮圆形按钮样式 */
+.float-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75); /* 深色半透明 */
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px); /* 现代毛玻璃效果 */
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+
+/* Hover 浮动微动效 */
+.float-btn:hover {
+  background: rgba(15, 23, 42, 0.95);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 回到顶部按钮（默认隐藏，滚动后自动显示） */
+#back-to-top-btn {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 显示状态 */
+#back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* 按钮内 SVG 图标 */
+.float-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+
+#back-to-top-btn:hover svg {
+  transform: translateY(-2px);
+}
+
+.float-home-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* 移动端尺寸自适应 */
+@media (max-width: 600px) {
+  .floating-nav-container {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+  .float-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
