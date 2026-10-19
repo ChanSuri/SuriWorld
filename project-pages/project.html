@@ -1,133 +1,210 @@
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-    <!-- 
-      TODO
-
-      Upload your Unemployable (or whatever photo you like) to the assets/images folder
-      and change the name of the image below to match the uploaded one
-
-      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
-
-      This should be the same across all pages.
-     -->
-     <link rel="icon" href="../assets/images/p1.png" />
-     <title>Suri's Secret</title>
-    <meta name="description" content="Waiting for the next opportunity to showcase my skills and creativity.">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/images/p1.png" />
+    <title>Suri Chen | Projects & Labs</title>
+    <meta name="description" content="Data engineering pipelines, AI GenAI tools, IoT systems, and CUS Torino web platform by Suri Chen.">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="../css/layout.css">
+    <!--  CSS -->
+    <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/typography.css">
     <link rel="stylesheet" href="../css/utilities.css">
+    <link rel="stylesheet" href="../css/project.css"> 
 
-		<script defer src="../js/script.js"></script>
-	</head>
-	<body>
+    <script defer src="../js/script.js"></script>
+  </head>
+  <body>
+
     <!-- NAVBAR -->
     <div class="navbar">
       <a class="nav-title-link" href="../index.html">
-        <!-- 
-          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
-
-          (this should be the same across all pages)
-         -->
-        <span class="nav-title">Portfolio Title</span>
-        <!-- 
-          TODO - Change the email after 'mailto:' to your email address for contact 
-        
-          (this should be the same across all pages)
-        -->
-        <a class="button" href="mailto:whitevans.eth@gmail.com">
-          <span class="button-text">Contact Me</span>
-        </a>
+        <span class="nav-title">Suri Chen</span>
+      </a>
+      <a class="button" href="mailto:surichan.study@gmail.com">
+        <span class="button-text">Contact Me</span>
       </a>
     </div>
 
-    <!-- MAIN PAGE CONTENT -->
+    <!-- MAIN CONTENT -->
     <div id="main-content">
 
-      <!-- PROJECT HEADER -->
-      <div id="project-header">
-          <!-- 
-            TODO
-
-            - Change the 'main-title' text to the name of your project
-            - Change the 'body-text' text to a short and sweet description of your project (maybe the same as the one on the project card)
-            - Change "desktop.jpeg" to the image filename you uploaded in the assets/images folder.
-          -->
-        <div class="main-title">Waiting</div>
-        <div class="body-text">I am trying to finish it ASAP.</div>
-        <image class="project-header-image" src="../assets/images/p8.png">
-      </div>
-
-      <!-- PROJECT DETAILS -->
-      <!-- 
-        TODO
-
-        - Change the 'subheader-text' to whatever header you want for project details
-        - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
-      -->
-      <div id="project-details">
-        <div class="subheader-text">Project Details / Background</div>
-        <div class="project-details-content">
-          <div class="body-text">Wait me.</div>
-          <div class="body-text">Finish soon.</div>
+      <!-- HEADER INTRO -->
+      <div id="project-header" class="projects-hero">
+        <div class="main-title">Projects & Labs</div>
+        <div class="body-text">
+          Explore my hands-on work in data engineering pipelines, GenAI assistants, smart IoT platforms, and community web applications. Featuring video demos, GitHub repositories, and custom web builds.
         </div>
       </div>
 
-      <!-- IMAGE GALLERY -->
-      <div id="project-gallery">
-        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
-        <div class="subheader-text">Image Gallery</div>
-        <div class="project-gallery-content">
-            <!-- 
-              TODO
-
-              This is where the images in the gallery live. Here's a simple gallery image for you to copy:
-
-              Full Width Image:
-
-                <div class="gallery-image-container">
-                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
-                  <span class="image-caption">IMAGE_CAPTION</span>
-                </div>
-
-              Half Width Image: 
-
-                <div class="gallery-image-container half-width">
-                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
-                  <span class="image-caption">IMAGE_CAPTION</span>
-                </div>
-
-              - To add an image to the this area, copy one of the above, paste it below this comment, and change the following:
-                  - IMAGE_NAME: the name of the image file in assets/images
-                  - IMAGE_CAPTION: to the caption of the image
-            -->
-            <div class="gallery-image-container half-width">
-              <img src="../assets/images/run.jpeg" class="gallery-image">
-              <span class="image-caption">Give your image a caption. People love context.</span>
-            </div>
-            <div class="gallery-image-container half-width">
-              <img src="../assets/images/drive.png" class="gallery-image">
-              <span class="image-caption">Give your image a caption. People love context.</span>
-            </div>
-            <div class="gallery-image-container">
-              <img src="../assets/images/solder.png" class="gallery-image">
-              <span class="image-caption">Give your image a caption. People love context.</span>
-            </div>
+      <!-- FEATURED PROJECT: CUS Torino Website -->
+      <div class="featured-project-card">
+        <div class="featured-content">
+          <span class="project-badge">Featured Web Platform</span>
+          <h3>CUS Torino Table Tennis Section Website</h3>
+          <p>
+            Designed and developed a dedicated, responsive web platform for the CUS Torino Table Tennis section. Features include team rosters, league match updates, training schedules, and an interactive interface for local athletes and sports enthusiasts in Turin.
+          </p>
+          <div class="card-actions">
+            <a href="https://thechopper2punto0.github.io/calendario-cus-tt/" target="_blank" rel="noopener noreferrer" class="btn-primary-custom">
+              <span>Visit Live Website</span> ↗
+            </a>
+            <a href="https://github.com/TheChopper2punto0/calendario-cus-tt" target="_blank" rel="noopener noreferrer" class="btn-outline-custom">
+              <span>View Source Code</span>
+            </a>
+          </div>
         </div>
       </div>
+
+      <!-- PROJECTS GRID: GitHub projects -->
+      <div class="projects-grid">
+        
+        <!-- Project 1: GymGenius - Smart IoT Platform -->
+        <div class="project-item-card">
+          <div class="project-media-wrapper">
+            <iframe src="https://www.youtube.com/embed/Aw5ZhNYrukE" title="GymGenius Promotion Video" allowfullscreen></iframe>
+          </div>
+          <div class="project-info">
+            <h4>GymGenius – Smart IoT Platform</h4>
+            <p>Engineered a real-time IoT gym platform featuring live occupancy/machine tracking, automated environmental control, and a responsive Telegram chatbot interface.</p>
+            
+            <div class="tech-tags">
+              <span class="tech-tag">Raspberry Pi</span>
+              <span class="tech-tag">Node-RED</span>
+              <span class="tech-tag">Thingspeak</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Telegram Bot</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/ChanSuri/GymGenius" target="_blank" class="text-link">GitHub Repo →</a>
+              <a href="https://www.youtube.com/embed/Q5rDSAjCMvI" class="text-link">Watch Full Demo Video ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: National Transmission Grid Simulator -->
+        <div class="project-item-card">
+          <div class="project-media-wrapper">
+            <iframe src="https://www.youtube.com/embed/qUlymCPcgwM" title="Grid Simulator Promo" allowfullscreen></iframe>
+          </div>
+          <div class="project-info">
+            <h4>National Transmission Grid Busbar Simulator</h4>
+            <p>Interdisciplinary ICT project to identify vulnerabilities, bottlenecks, and potential points of failure in complex power transmission grid layouts using simulation modeling.</p>
+            
+            <div class="tech-tags">
+              <span class="tech-tag">Julia</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">MATLAB</span>
+              <span class="tech-tag">Simulation GUI</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/ChanSuri" target="_blank" class="text-link">GitHub Repo →</a>
+              <a href="#" class="text-link">Technical Overview ↗</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- GITHUB LABS & REPOSITORIES SECTION -->
+<div class="github-labs-section">
+  <div class="subheader-text">GitHub Repositories & Open Source</div>
+  
+  <div class="github-grid">
+
+    <!-- Project Item 1 -->
+    <div class="github-card">
+      <div class="github-card-header">
+        <div class="repo-title-wrapper">
+          <img src="../assets/icons/github.svg" class="repo-icon" alt="GitHub Repo">
+          <a href="https://github.com/ChanSuri/genAI-assistant-analysis-final" target="_blank" class="repo-title">genAI-assistant-analysis-final</a>
+        </div>
+        <span class="visibility-badge">Public</span>
+      </div>
+
+      <p class="repo-description">
+        Different Models Comparison for GenAI Assistant in Arduino cloud website. Collecting and analyzing user feedback to evaluate performance, usability, and response quality across multiple AI models.
+      </p>
+
+      <div class="repo-footer">
+        <div class="repo-meta">
+          <span class="language-tag">
+            <span class="language-color python"></span> Python / NLP / Data Analysis
+          </span>
+          <span class="meta-item">⭐</span>
+        </div>
+        <a href="https://github.com/ChanSuri/genAI-assistant-analysis-final" target="_blank" class="github-btn">
+          <span>View Code</span> ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Project Item 2 -->
+    <div class="github-card">
+      <div class="github-card-header">
+        <div class="repo-title-wrapper">
+          <img src="../assets/icons/github.svg" class="repo-icon" alt="GitHub Repo">
+          <a href="https://github.com/ChanSuri/MCPserver-doc-analyzer" target="_blank" class="repo-title">MCPserver-doc-analyzer</a>
+        </div>
+        <span class="visibility-badge">Public</span>
+      </div>
+
+      <p class="repo-description">
+        An Intelligent Knowledge Agent for the Arduino Analytics Ecosystem Playbook based on the Model Context Protocol (MCP).
+      <div class="repo-footer">
+        <div class="repo-meta">
+          <span class="language-tag">
+            <span class="language-color julia"></span> Python / MCP
+          </span>
+          <span class="meta-item">⭐</span>
+        </div>
+        <a href="https://github.com/ChanSuri/MCPserver-doc-analyzer" target="_blank" class="github-btn">
+          <span>View Code</span> ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Project Item 3 -->
+    <div class="github-card">
+      <div class="github-card-header">
+        <div class="repo-title-wrapper">
+          <img src="../assets/icons/github.svg" class="repo-icon" alt="GitHub Repo">
+          <a href="https://github.com/ChanSuri/NLP-for-AIChat-Analysis" target="_blank" class="repo-title">NLP-for-AIChat-Analysis</a>
+        </div>
+        <span class="visibility-badge">Public</span>
+      </div>
+
+      <p class="repo-description">
+        This project aims to enhance user interaction with an AI chat assistant by utilizing Natural Language Processing (NLP) techniques. The workflow includes finding the best data sources, processing data, and categorizing user inquiries.
+      </p>
+
+      <div class="repo-footer">
+        <div class="repo-meta">
+          <span class="language-tag">
+            <span class="language-color html-js"></span> Python / NLP / Data Analysis
+          </span>
+          <span class="meta-item">⭐</span>
+        </div>
+        <a href="https://github.com/ChanSuri/NLP-for-AIChat-Analysis" target="_blank" class="github-btn">
+          <span>View Code</span> ↗
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
     </div>
 
     <!-- FOOTER -->
     <div id="footer">
-      <a class="icon-link" target="_blank" href="https://www.instagram.com/sssuriiii/"><img src="../assets/icons/instagram.svg" class="footer-icon" alt="GitHub"/></a>
+      <a class="icon-link" target="_blank" href="https://www.instagram.com/sssuriiii/"><img src="../assets/icons/instagram.svg" class="footer-icon" alt="Instagram"/></a>
       <a class="icon-link" target="_blank" href="https://github.com/ChanSuri"><img src="../assets/icons/github.svg" class="footer-icon" alt="GitHub"/></a>
       <a class="icon-link" target="_blank" href="https://linkedin.com"><img src="../assets/icons/linkedin.svg" class="footer-icon" alt="LinkedIn"/></a>
       <a class="icon-link" href="mailto:surichan.study@gmail.com"><img src="../assets/icons/mail.svg" class="footer-icon" alt="Mail"/></a>
     </div>
 
-	</body>
+  </body>
 </html>

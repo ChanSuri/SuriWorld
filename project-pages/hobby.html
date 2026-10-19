@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/images/p1.png" />
+    <title>Suri Chen | Beyond Code - Sports & Hobbies</title>
+    <meta name="description" content="Table tennis athlete journey and Hot Wheels miniature car collection by Suri Chen.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 引入全站统一的外部样式表 -->
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+    <script defer src="../js/script.js"></script>
+    <style>
+      /* =========================================================
+         Beyond Code专区自定义自适应样式
+      ========================================================= */
+      
+      .hobby-section {
+        margin-bottom: 50px;
+      }
+
+      .hobby-section-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 10px;
+      }
+
+      /* 乒乓球经历故事卡片排版 */
+      .story-card {
+        background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 30px;
+      }
+
+      .story-card h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        color: #1e293b;
+      }
+
+      .story-card p {
+        margin: 0;
+        color: #4b5563;
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      /* 风火轮/收藏网格 */
+      .collection-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 20px;
+      }
+
+      .collect-item {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .collect-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .collect-img-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        background-color: #0f172a;
+        overflow: hidden;
+      }
+
+      .collect-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .collect-item:hover .collect-img-wrapper img {
+        transform: scale(1.05);
+      }
+
+      .collect-info {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .collect-info h4 {
+        margin: 0;
+        font-size: 1.05rem;
+        color: #0f172a;
+      }
+
+      .collect-info p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: #64748b;
+        line-height: 1.4;
+      }
+
+      /* 响应式断点 */
+      @media (max-width: 1000px) {
+        .collection-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .collection-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        <span class="nav-title">Suri Chen</span>
+      </a>
+      <a class="button" href="mailto:surichan.study@gmail.com">
+        <span class="button-text">Contact Me</span>
+      </a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content">
+
+      <!-- HEADER INTRO -->
+      <div id="project-header">
+        <div class="main-title">Beyond Code</div>
+        <div class="body-text">
+          When I am not writing data pipelines or training AI models, you can find me on the table tennis court with a fast paddle, or curating a miniature world of classic Hot Wheels cars.
+        </div>
+      </div>
+
+      <!-- SECTION 1: Table Tennis Passion -->
+      <div class="hobby-section">
+        <div class="hobby-section-title">🏓 Table Tennis Rallies & Athletic Journey</div>
+        
+        <div class="story-card">
+          <h3>From Childhood Rallies to Italian Leagues</h3>
+          <p>
+            Having started playing table tennis since I was 6 years old, the sport has shaped not only my physical resilience but also my strategic thinking and quick reflexes. Currently playing in the <strong>D1 and C2 Leagues with CUS Torino ASD</strong> in Italy, every match is a blend of intense focus, geometry, and high-speed decision-making.
+          </p>
+        </div>
+
+        <!-- 乒乓球精彩瞬间图集（可替换成你的照片） -->
+        <div class="collection-grid">
+          <div class="collect-item">
+            <div class="collect-img-wrapper">
+              <img src="../assets/images/table-tennis-1.jpg" alt="CUS Torino Match">
+            </div>
+            <div class="collect-info">
+              <h4>CUS Torino League Match</h4>
+              <p>Competing fiercely in the Italian regional leagues.</p>
+            </div>
+          </div>
+
+          <div class="collect-item">
+            <div class="collect-img-wrapper">
+              <img src="../assets/images/table-tennis-2.jpg" alt="Training Session">
+            </div>
+            <div class="collect-info">
+              <h4>Daily Training & Drills</h4>
+              <p>Refining spins, footwork, and tactical responses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: Hot Wheels Collection -->
+      <div class="hobby-section">
+        <div class="hobby-section-title">🏎️ Miniature Speed: Hot Wheels Collection</div>
+        
+        <div class="story-card">
+          <h3>Curating a World on Four Small Wheels</h3>
+          <p>
+            Beyond sports and technology, I have a deep passion for collecting miniature cars—especially <strong>Hot Wheels</strong>. From rare vintage castings and JDM legends to sleek modern supercars, this hobby is my personal tribute to automotive design, engineering, and miniature aesthetics.
+          </p>
+        </div>
+
+        <!-- 风火轮收藏展示网格 -->
+        <div class="collection-grid">
+          
+          <div class="collect-item">
+            <div class="collect-img-wrapper">
+              <img src="../assets/images/hotwheels-1.jpg" alt="Vintage Collection">
+            </div>
+            <div class="collect-info">
+              <h4>Vintage Classics Series</h4>
+              <p>Timeless retro designs and nostalgic styling from past decades.</p>
+            </div>
+          </div>
+
+          <div class="collect-item">
+            <div class="collect-img-wrapper">
+              <img src="../assets/images/hotwheels-2.jpg" alt="JDM Legends">
+            </div>
+            <div class="collect-info">
+              <h4>JDM & Street Culture</h4>
+              <p>Iconic Japanese domestic market tuner cars with custom liveries.</p>
+            </div>
+          </div>
+
+          <div class="collect-item">
+            <div class="collect-img-wrapper">
+              <img src="../assets/images/hotwheels-3.jpg" alt="Exotic Supercars">
+            </div>
+            <div class="collect-info">
+              <h4>Exotic Supercars & Concept</h4>
+              <p>Aggressive aerodynamics and futuristic design concepts in 1:64 scale.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <a class="icon-link" target="_blank" href="https://www.instagram.com/sssuriiii/"><img src="../assets/icons/instagram.svg" class="footer-icon" alt="Instagram"/></a>
+      <a class="icon-link" target="_blank" href="https://github.com/ChanSuri"><img src="../assets/icons/github.svg" class="footer-icon" alt="GitHub"/></a>
+      <a class="icon-link" target="_blank" href="https://linkedin.com"><img src="../assets/icons/linkedin.svg" class="footer-icon" alt="LinkedIn"/></a>
+      <a class="icon-link" href="mailto:surichan.study@gmail.com"><img src="../assets/icons/mail.svg" class="footer-icon" alt="Mail"/></a>
+    </div>
+
+  </body>
+</html>
