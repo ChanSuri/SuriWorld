@@ -1,6 +1,6 @@
-/* =========================
+/* =========================================================
    Global Reset & Base
-========================= */
+========================================================= */
 
 * {
   box-sizing: border-box;
@@ -11,38 +11,37 @@ html {
   -webkit-text-size-adjust: none;
   -moz-text-size-adjust: none;
   -ms-text-size-adjust: none;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #0f172a;
 }
 
 
-/* =========================
+/* =========================================================
    Navbar Layout & Hero
-========================= */
+========================================================= */
 
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 180px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 0 50px;
-
   background-image: url("../assets/images/profile.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   z-index: 100;
   overflow: hidden;
 }
@@ -63,23 +62,31 @@ body {
 }
 
 /* 导航标题 */
+.nav-title-link {
+  text-decoration: none;
+}
+
 .nav-title {
-  font-size: 5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
 }
 
 
-/* =========================
+/* =========================================================
    Button Visual Override
-   （不碰 utilities 的结构）
-========================= */
+========================================================= */
 
 .navbar .button {
   background-color: rgba(255, 255, 255, 0.25);
   color: white;
-  border-color: white;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .navbar .button:hover {
@@ -87,281 +94,48 @@ body {
 }
 
 
-/* =========================
-   Main Page Layout
-========================= */
+/* =========================================================
+   Main Page Layout (全站自适应统一标准)
+========================================================= */
 
 #main-content {
-  margin: 225px 425px;
-  display: flex;
-  flex-direction: column;
-  gap: 96px;
+  max-width: 1080px; /* 更紧凑精致，两侧会自动留出更多优雅空白 */
+  margin: 220px auto 100px auto;
+  padding: 0 32px;
 }
 
 
-/* =========================
-   Portfolio Header
-========================= */
+/* =========================================================
+   Portfolio Header & Typing Effect
+========================================================= */
 
 #portfolio-header {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 32px;
 }
 
 #portfolio-header-image-container {
-  flex-basis: 50%;
+  flex-basis: 45%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .portfolio-header-image {
-  width: 80%;
+  width: 100%;
   height: auto;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
 #portfolio-header-text-container {
-  flex-basis: 50%;
+  flex-basis: 55%;
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 24px;
 }
 
-
-/* =========================
-   About Section
-========================= */
-
-#about-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.about-section-content {
-  display: flex;
-  flex-direction: column;
-  gap: 34px;
-}
-
-
-/* =========================
-   Project Section
-========================= */
-
-#my-work-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 34px 50px;
-}
-
-/* Project Card */
-.project-card {
-  max-width: calc((100% - 32px) / 5);
-  display: flex;
-  flex-direction: column;
-  gap: 34px;
-}
-
-.project-card-text-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.project-image {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  object-position: center;
-}
-
-
-/* =========================
-   Project Pages
-========================= */
-
-#project-header {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-#project-details {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.project-details-content {
-  display: flex;
-  flex-direction: column;
-  gap: 34px;
-}
-
-/* =========================
-   Media Row: Video + Image
-========================= */
-
-.media-row-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  height: 400px;
-  margin-top: 24px;
-}
-
-/* Shared image and video styles */
-.media-row-container .project-header-image,
-.media-row-container .project-header-video {
-  display: block;
-  flex: 0 1 auto;
-  min-width: 0;
-  height: 100%;
-  width: auto;
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* Responsive: stack vertically on mobile */
-@media (max-width: 800px) {
-  .media-row-container {
-    flex-direction: column;
-    align-items: stretch;
-    height: auto;
-    gap: 16px;
-  }
-
-  .media-row-container .project-header-image,
-  .media-row-container .project-header-video {
-    width: 100%;
-    height: auto;
-    flex: none;
-  }
-}
-
-/* Project Gallery */
-
-#project-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* 外层容器 */
-.project-gallery-content {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 三列布局 */
-  gap: 34px 16px;                        /* 行间距 24px，列间距 16px */
-}
-
-/* 图片容器 */
-.gallery-image-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* 图片本身 */
-.gallery-image {
-  width: 100%;
-  aspect-ratio: 4 / 3;    /* 高度自动跟随宽度 */
-  object-fit: cover;
-  object-position: center;
-  border-radius: 6px;
-}
-
-/* 响应式：tablet 两列，手机一列 */
-@media (max-width: 1000px) {
-  .project-gallery-content {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .project-gallery-content {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* =========================
-   Responsive Layout
-========================= */
-
-/* ≤1600px */
-@media (max-width: 1600px) {
-  #main-content {
-    margin: 225px 275px;
-  }
-}
-
-/* ≤1200px */
-@media (max-width: 1200px) {
-  #main-content {
-    margin: 225px 175px;
-  }
-}
-
-/* ≤1000px */
-@media (max-width: 1000px) {
-  #main-content {
-    margin: 225px 75px;
-  }
-}
-
-/* ≤800px */
-@media (max-width: 800px) {
-  .navbar {
-    height: auto;
-    padding: 20px;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .nav-title {
-    font-size: 2rem;
-  }
-
-  #main-content {
-    margin: 150px 50px;
-  }
-
-  #portfolio-header {
-    flex-direction: column;
-  }
-
-  .project-card {
-    max-width: calc((100% - 16px) / 2);
-  }
-}
-
-/* ≤600px */
-@media (max-width: 600px) {
-  #main-content {
-    margin: 125px 20px;
-  }
-
-  .project-card {
-    max-width: 100%;
-  }
-}
-
-/* =========================
-   Portfolio Header Enhancements
-========================= */
-
-/* 1. 标题与渐变/高亮色彩 */
 .header-text .main-title {
   font-size: 2.75rem;
   font-weight: 800;
@@ -376,23 +150,40 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* 2. Body Text 容器整体排版 */
+/* 打字机文字效果 */
+.typing-text-wrapper {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2563eb;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.typing-cursor {
+  font-weight: bold;
+  color: #2563eb;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 .header-text .body-text {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* 保持与你整体设计一致的间距 */
+  gap: 16px;
   margin-top: 16px;
   font-size: 1.05rem;
   line-height: 1.6;
   color: #4b5563;
 }
 
-/* 清除默认 p 标签外边距 */
 .header-text .body-text p {
   margin: 0;
 }
 
-/* 3. 多重身份 Badge 标签 */
+/* 多重身份 Badge 标签 */
 .identity-tags {
   display: flex;
   flex-wrap: wrap;
@@ -416,9 +207,8 @@ body {
   color: #0f172a;
 }
 
-/* 4. 重点 Slogan 金句样式 */
 .hero-tagline {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #1e293b;
   border-left: 3px solid #2563eb;
@@ -427,14 +217,16 @@ body {
 
 .hero-description {
   color: #4b5563;
+  line-height: 1.6;
 }
 
 .hero-hobbies {
   color: #6b7280;
   font-style: italic;
+  line-height: 1.6;
 }
 
-/* 5. 按钮 Hover 细节增强（平滑平移与图标微动） */
+/* 按钮 Hover 微动效 */
 #portfolio-header-text-container .button {
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
@@ -449,15 +241,289 @@ body {
 
 .right-arrow-icon {
   transition: transform 0.2s ease;
-  /* filter: brightness(0) invert(1); */
 }
 
 
-/* =========================
-   Media Page Modern Styles
-========================= */
+/* =========================================================
+   About Section & Tech Terminal (极客终端)
+========================================================= */
 
-/* FISU 跳转卡片 */
+#about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.about-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 科技终端控制台 */
+.tech-terminal {
+  background-color: #0f172a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.25);
+  border: 1px solid #1e293b;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.85rem;
+}
+
+.terminal-header {
+  background-color: #1e293b;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background-color: #ef4444; }
+.terminal-dot.yellow { background-color: #f59e0b; }
+.terminal-dot.green { background-color: #10b981; }
+
+.terminal-title {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  margin-left: 8px;
+}
+
+.terminal-body {
+  padding: 20px;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.terminal-body p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.terminal-body .prompt {
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.terminal-body .val {
+  color: #a7f3d0;
+}
+
+.blink-cursor {
+  color: #38bdf8;
+  animation: blink 0.8s infinite;
+}
+
+
+/* =========================================================
+   My Shows / Projects - Modern 4-Column Card Grid
+========================================================= */
+
+#my-work-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* 精致 4 列网格 (gap: 18px) */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  width: 100%;
+}
+
+/* 卡片主体：现代圆角与发光动效 */
+.project-card {
+  max-width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  gap: 12px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: #93c5fd;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.08);
+}
+
+/* 像素图片容器 */
+.project-image {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  background-color: #f8fafc;
+  border-radius: 10px;
+  padding: 12px;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.04);
+}
+
+/* 文字区排版 */
+.project-card-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.project-card .project-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.project-card .project-card-text {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.45;
+  margin: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+/* 胶囊微动效按钮 */
+.project-card .button {
+  width: 100%;
+  margin: 4px 0 0 0;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #0f172a;
+  background: transparent;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.project-card .button-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.project-card .right-arrow-icon {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s ease;
+}
+
+.project-card .button:hover {
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+.project-card .button:hover .right-arrow-icon {
+  filter: brightness(0) invert(1);
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   Project Pages / Media Row / Gallery
+========================================================= */
+
+#project-header,
+#project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.media-row-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 400px;
+  margin-top: 24px;
+}
+
+.media-row-container .project-header-image,
+.media-row-container .project-header-video {
+  display: block;
+  flex: 0 1 auto;
+  min-width: 0;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Project Gallery Grid */
+#project-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-gallery-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px 16px;
+}
+
+.gallery-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gallery-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 6px;
+}
+
+
+/* =========================================================
+   Media Page Styles
+========================================================= */
+
 .fisu-link-card {
   display: flex;
   justify-content: space-between;
@@ -482,31 +548,24 @@ body {
   font-size: 0.95rem;
 }
 
-/* FISU button styling */
 .fisu-link-card .primary-button {
   background-color: #ffffff;
   color: #1a1a1a;
   border: 1px solid #ffffff;
-
-  transition: transform 0.2s ease,
-              background-color 0.2s ease,
-              color 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Button hover effect */
 .fisu-link-card .primary-button:hover {
   background-color: #e6e6e6;
   color: #000000;
   transform: translateY(-2px);
 }
 
-/* Arrow styling */
 .fisu-link-card .right-arrow-icon {
   filter: brightness(0);
   transition: transform 0.2s ease;
 }
 
-/* Arrow animation */
 .fisu-link-card .primary-button:hover .right-arrow-icon {
   transform: translateX(4px);
 }
@@ -523,7 +582,6 @@ body {
   text-transform: uppercase;
 }
 
-/* 视频网格排版 */
 #video-section {
   display: flex;
   flex-direction: column;
@@ -551,7 +609,6 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
 }
-
 
 .video-wrapper {
   position: relative;
@@ -590,42 +647,11 @@ body {
   line-height: 1.4;
 }
 
-/* 媒体标签颜色 */
-.media-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 4px;
-  width: fit-content;
-}
-
-.media-tag.cctv {
-  background-color: #fee2e2;
-  color: #dc2626;
-}
-
-.media-tag.phoenix {
-  background-color: #fef3c7;
-  color: #d97706;
-}
-
-/* 响应式调整 */
-@media (max-width: 1000px) {
-  .video-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .fisu-link-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-}
 
 /* =========================================================
    Modern Floating Navigation (Back to Top & Home)
 ========================================================= */
 
-/* 悬浮控制组件容器 */
 .floating-nav-container {
   position: fixed;
   bottom: 32px;
@@ -636,15 +662,14 @@ body {
   z-index: 999;
 }
 
-/* 通用悬浮圆形按钮样式 */
 .float-btn {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(15, 23, 42, 0.75); /* 深色半透明 */
+  background: rgba(15, 23, 42, 0.75);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px); /* 现代毛玻璃效果 */
+  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   cursor: pointer;
@@ -657,7 +682,6 @@ body {
   opacity: 1;
 }
 
-/* Hover 浮动微动效 */
 .float-btn:hover {
   background: rgba(15, 23, 42, 0.95);
   transform: translateY(-3px);
@@ -665,21 +689,18 @@ body {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* 回到顶部按钮（默认隐藏，滚动后自动显示） */
 #back-to-top-btn {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-/* 显示状态 */
 #back-to-top-btn.visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-/* 按钮内 SVG 图标 */
 .float-btn svg {
   width: 20px;
   height: 20px;
@@ -695,13 +716,95 @@ body {
   transform: scale(1.1);
 }
 
-/* 移动端尺寸自适应 */
-@media (max-width: 600px) {
+
+/* =========================================================
+   Responsive Breakpoints
+========================================================= */
+
+@media (max-width: 1200px) {
+  #main-content {
+    margin: 200px auto 80px auto;
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .project-gallery-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .about-grid-container {
+    grid-template-columns: 1fr;
+  }
+  #portfolio-header {
+    flex-direction: column;
+  }
+  #portfolio-header-image-container,
+  #portfolio-header-text-container {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-title {
+    font-size: 2.25rem;
+  }
+
+  #main-content {
+    margin: 140px auto 60px auto;
+    padding: 0 20px;
+    gap: 40px;
+  }
+
+  .media-row-container {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    gap: 16px;
+  }
+
+  .media-row-container .project-header-image,
+  .media-row-container .project-header-video {
+    width: 100%;
+    height: auto;
+    flex: none;
+  }
+
+  .fisu-link-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .projects-container,
+  .video-grid,
+  .project-gallery-content {
+    grid-template-columns: 1fr;
+  }
+
   .floating-nav-container {
     bottom: 20px;
     right: 20px;
     gap: 10px;
   }
+
   .float-btn {
     width: 40px;
     height: 40px;

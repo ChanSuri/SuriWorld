@@ -8,28 +8,17 @@ if (document.getElementById('my-work-link')) {
    Global Navigation Interactivity (Smooth Scroll & Floating Nav)
 ========================================================= */
 
-/* =========================================================
-   Global Navigation Interactivity (Smooth Scroll & Floating Nav)
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. 判断当前是否为主页 (index.html 或根路径 "/")
-  const path = window.location.pathname;
-  const isHomePage = path.endsWith("index.html") || path === "/" || path.endsWith("/");
-
-  // 2. 如果是主页，不生成返回主页按钮；如果是子页面，生成返回主页按钮
-  const homeBtnHTML = isHomePage ? "" : `
-    <a href="../index.html" class="float-btn float-home-btn" title="Return to Home" aria-label="Return to Home">
-      <svg viewBox="0 0 24 24">
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-      </svg>
-    </a>
-  `;
-
-  // 3. 动态拼接并插入悬浮组件 HTML
+  // 1. 动态向页面插入悬浮组件 HTML
   const navHTML = `
     <div class="floating-nav-container">
-      ${homeBtnHTML}
+      <!-- 返回主页按钮 -->
+      <a href="../index.html" class="float-btn float-home-btn" title="Return to Home" aria-label="Return to Home">
+        <svg viewBox="0 0 24 24">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+      </a>
+      <!-- 回到顶部按钮 -->
       <button id="back-to-top-btn" class="float-btn" title="Back to Top" aria-label="Back to Top">
         <svg viewBox="0 0 24 24">
           <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
@@ -43,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const backToTopBtn = document.getElementById("back-to-top-btn");
 
-  // 4. 监听页面滚动：向下滚动超过 300px 时淡入显示“回到顶部”按钮
+  // 2. 监听页面滚动：向下滚动超过 300px 时淡入显示“回到顶部”按钮
   window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
       backToTopBtn.classList.add("visible");
@@ -52,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 5. 点击平滑滚动回顶部
+  // 3. 点击平滑滚动回顶部
   backToTopBtn.addEventListener("click", () => {
     window.scrollTo({
       top: 0,

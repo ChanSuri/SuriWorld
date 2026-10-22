@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-
-    <!-- 
-      TODO
-
-      Upload your Unemployable (or whatever photo you like) to the assets/images folder
-      and change the name of the image below to match the uploaded one
-
-      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
-
-      This should be the same across all pages.
-     -->
+  <head>
+    <meta charset="utf-8">
     <link rel="icon" href="./assets/images/p7.png" />
-		<title>Suri's Secret</title>
-    <meta name="description" content="A portfolio template for the Unemployables community.">
+    <title>Suri Chen | Personal Portfolio</title>
+    <meta name="description" content="Personal Portfolio of Suri Chen - Data Engineer, AI Enthusiast, Athlete & Photographer">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/typography.css">
     <link rel="stylesheet" href="./css/utilities.css">
 
-		<script defer src="./js/script.js"></script>
-	</head>
-	<body>
+    <script defer src="./js/script.js"></script>
+  </head>
+  <body>
     <!-- NAVBAR -->
     <div class="navbar">
       <a class="nav-title-link" href="./index.html">
-        <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
-        <span class="nav-title">Suri's Secret</span>
-         <!-- TODO - Change the email after 'mailto:' to your email address for contact -->
-        <a class="button" href="mailto:surichan.study@gmail.com">
-          <span class="button-text">Contact Me</span>
-        </a>
+        <span class="nav-title">Suri' Secret</span>
+      </a>
+      <a class="button" href="mailto:surichan.study@gmail.com">
+        <span class="button-text">Contact Me</span>
       </a>
     </div>
 
@@ -43,159 +30,132 @@
       <!-- PORTFOLIO HEADER -->
       <div id="portfolio-header">
         <div id="portfolio-header-image-container">
-          <!-- 
-            TODO
-
-            - Change the img "src" attribute to point to the Unemployable image you uploaded (or whatever image).
-            - Change the number to point to your Unemployable & replace the OpenSea link with your own
-            - If you aren't using an Unemployable as your image, remove the entire "a" element
-          -->
-          <img src="./assets/images/1.jpeg" class="portfolio-header-image">
+          <img src="./assets/images/1.jpeg" class="portfolio-header-image" alt="Suri Profile">
           <a class="no-underline" target="_blank" href="https://github.com/ChanSuri">
             <span class="image-caption">Always on my way</span>
           </a>
         </div>
 
-          <!-- 
-            TODO
-
-            - Change the main-title to whatver you want
-            - Change the body-text after that to a quick introduction to what you do
-            - Edit the button text if you feel like it. It will link to the projects section below.
-          -->
-        <!-- <div id="portfolio-header-text-container">
-            <div class="header-text">
-              <span class="main-title">Hey, I'm Suri</span>
-              <div class="body-text">I’m a developer and AI enthusiast building cool projects that leverage the power of artificial intelligence.</div>
-            </div>
-            <a class="button" id="my-work-link">
-              <span class="button-text">Check out my projects</span> 
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-            </a>
-        </div> -->
         <div id="portfolio-header-text-container">
-  <div class="header-text">
-    <h1 class="main-title">Hey, I'm <span class="accent-text">Suri</span> 👋</h1>
-    
-    <div class="body-text">
-      <!-- id Badge groups -->
-      <div class="identity-tags">
-        <span class="tag">Data Engineer</span>
-        <span class="tag">AI Enthusiast</span>
-        <span class="tag">Table Tennis</span>
-        <span class="tag">Photography</span>
+          <div class="header-text">
+            <!-- 炫酷打字机动态效果 -->
+            <h1 class="main-title">
+              Hey, I'm <span class="accent-text">Suri</span> 👋<br>
+              <span class="typing-text-wrapper">
+                <span id="typing-text"></span><span class="typing-cursor">|</span>
+              </span>
+            </h1>
+            
+            <div class="body-text">
+              <!-- ID Badge groups -->
+              <div class="identity-tags">
+                <span class="tag">Data Engineer</span>
+                <span class="tag">AI Practitioner</span>
+                <span class="tag">FISU Torchbearer</span>
+                <span class="tag">Table Tennis Athlete</span>
+                <span class="tag">Photographer</span>
+              </div>
+
+              <!-- Introduction -->
+              <p class="hero-tagline">
+                Building intelligent data pipelines by day, chasing light and spin by night.
+              </p>
+            </div>
+          </div>
+
+          <a class="button" id="my-work-link" href="#my-work-section">
+            <span class="button-text">Explore My Universe</span> 
+            <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="arrow"/>
+          </a>
+        </div>
       </div>
 
-      <!-- Introduction -->
-      <p class="hero-tagline">
-        Building intelligent systems by day, chasing light and spin by night.
-      </p>
-    </div>
-  </div>
-
-  <a class="button" id="my-work-link" href="#my-work-section">
-    <span class="button-text">Check out my world</span> 
-    <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="arrow"/>
-  </a>
-</div>
-      </div>
-
-      <!-- ABOUT SECTION -->
-      <!-- 
-        TODO
-
-        - Change the subheader-text to whatever header you want
-        - Add paragraphs using the <div class="body-text"></div> elements in the "about-section-content"
-      -->
+      <!-- ABOUT SECTION WITH TECH TERMINAL (极客终端窗口) -->
       <div id="about-section">
         <span class="subheader-text">My Background / About Me</span>
-        <div class="about-section-content">
-          <div class="body-text">
-            <p class="hero-description">
-              I turn messy raw data into elegant insights, craft robust code, and explore the edge of AI.
-            </p>
-
-            <p class="hero-hobbies">
-              When I’m away from the keyboard, you’ll find me either landing a backhand loop on the ping-pong table 🏓 or capturing authentic moments through my lens 📸.
-            </p>
+        
+        <div class="about-grid-container">
+          <div class="about-section-content">
+            <div class="body-text">
+              <p class="hero-description">
+                I turn raw data streams into elegant insights, architect scalable software, and push the boundary of AI systems.
+              </p>
+              <p class="hero-hobbies">
+                When away from the keyboard, you'll find me landing a backhand loop on the table tennis court 🏓 or capturing authentic moments across the world 📸.
+              </p>
+            </div>
           </div>
-          <div class="body-text">About me?</div>
-        <div class="hero-description">You will see.</div>
+
+          <!-- 科技终端/代码控制台卡片 -->
+          <div class="tech-terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">suri@system:~ status.sh</span>
+            </div>
+            <div class="terminal-body">
+              <p><span class="prompt">$</span> suri.location <span class="val">"Turin, Italy 🇮🇹"</span></p>
+              <p><span class="prompt">$</span> suri.status <span class="val">"Building GenAI & Data Pipelines 🚀"</span></p>
+              <p><span class="prompt">$</span> suri.current_club <span class="val">"CUS Torino ASD (D1/C2 League)"</span></p>
+              <p><span class="prompt">$</span> suri.fisu_honors <span class="val">"1st Torchbearer @ Torino 2026 🔥"</span></p>
+              <p><span class="prompt">$</span> <span class="blink-cursor">_</span></p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- PROJECTS / MY WORK SECTION -->
       <div id="my-work-section">
-        <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
         <span class="subheader-text">My Shows / Projects</span>
 
         <div class="projects-container">
-          <!-- 
-            TODO
-
-            This is where the project cards live. Here's a base level project card for you to copy:
-            <div class="project-card">
-              <img src="./assets/images/IMAGE_NAME" class="project-image">
-              <div class="project-card-text-container">
-                <div class="subheader-text project-title">PROJECT_NAME</div>
-                <div class="body-text project-card-text">SMALL_PROJECT_DESCRIPTION</div>
-              </div>
-              <a class="button" href="./project-pages/PROJECT_PAGE_NAME.html">
-                <span class="button-text">Read More</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a>
-            </div>
-
-            - To add a project to the this area, copy the above, paste it below this comment, and change the following:
-                - IMAGE_NAME: the name of the image file in assets/images
-                - PROJECT_NAME: the name of the project (keep it short, it only shows 1 line)
-                - SMALL_PROJECT_DESCRIPTION: a quick project description (max 4 lines)
-                - PROJECT_PAGE_NAME.html: the html filename for the project (must be in project-pages folder)
-          -->
-          <div class="project-card">
-            <img src="./assets/images/p4.png" class="project-image">
+          <div class="project-card glow-card">
+            <img src="./assets/images/p4.png" class="project-image" alt="Press & Media">
             <div class="project-card-text-container">
               <div class="subheader-text project-title">Press & Media</div>
               <div class="body-text project-card-text">Media features, FISU torchbearer highlights, and volunteer experiences.</div>
             </div>
             <a class="button" href="./project-pages/media.html">
               <span class="button-text">Explore Media</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+              <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="arrow"/>
             </a>
           </div>
-          <div class="project-card">
-            <img src="./assets/images/p3.png" class="project-image">
+
+          <div class="project-card glow-card">
+            <img src="./assets/images/p3.png" class="project-image" alt="Visuals & Lens">
             <div class="project-card-text-container">
               <div class="subheader-text project-title">Visuals & Lens</div>
               <div class="body-text project-card-text">Capturing authentic moments, light, and stories through my camera lens.</div>
             </div>
             <a class="button" href="./project-pages/gallery.html">
               <span class="button-text">View Gallery</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+              <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="arrow"/>
             </a>
           </div>
-          <div class="project-card">
-            <img src="./assets/images/p1.png" class="project-image">
+
+          <div class="project-card glow-card">
+            <img src="./assets/images/p1.png" class="project-image" alt="Projects & Labs">
             <div class="project-card-text-container">
               <div class="subheader-text project-title">Projects & Labs</div>
-              <div class="body-text project-card-text">Interactive AI tools, IoT solutions, and data pipeline video demos and case studies. </div>
+              <div class="body-text project-card-text">Interactive AI tools, IoT solutions, and data pipeline video demos and case studies.</div>
             </div>
             <a class="button" href="./project-pages/project.html">
               <span class="button-text">See Projects</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+              <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="arrow"/>
             </a>
           </div>
-          <div class="project-card">
-            <img src="./assets/images/p2.png" class="project-image">
+
+          <div class="project-card glow-card">
+            <img src="./assets/images/p2.png" class="project-image" alt="Beyond Code">
             <div class="project-card-text-container">
               <div class="subheader-text project-title">Beyond Code</div>
-              <div class="body-text project-card-text">From table tennis rallies and orienteering tracks to intercultural living between China and Italy.</div>
+              <div class="body-text project-card-text">From table tennis rallies and Hot Wheels collection to living between China and Italy.</div>
             </div>
             <a class="button" href="./project-pages/hobby.html">
               <span class="button-text">Discover Story</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+              <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="arrow"/>
             </a>
-            
           </div>
         </div>
       </div>
@@ -203,24 +163,56 @@
 
     <!-- FOOTER -->
     <div id="footer">
-      <!-- 
-        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
-
-        This should be the same across all pages.
-      -->
       <a class="icon-link" target="_blank" href="https://www.instagram.com/sssuriiii/">
-        <image src="./assets/icons/instagram.svg" class="footer-icon"/>
+        <img src="./assets/icons/instagram.svg" class="footer-icon" alt="Instagram"/>
       </a>
       <a class="icon-link" target="_blank" href="https://github.com/ChanSuri">
         <img src="./assets/icons/github.svg" class="footer-icon" alt="GitHub"/>
       </a>
       <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/shuruichen/">
-        <image src="./assets/icons/linkedin.png" class="footer-icon"/>
+        <img src="./assets/icons/linkedin.png" class="footer-icon" alt="LinkedIn"/>
       </a>
       <a class="icon-link" href="mailto:surichan.study@gmail.com">
-        <image src="./assets/icons/mail.svg" class="footer-icon"/>
+        <img src="./assets/icons/mail.svg" class="footer-icon" alt="Mail"/>
       </a>
     </div>
 
-	</body>
+    <!-- 打字机效果脚本 -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const words = ["Data Engineer", "AI Developer", "FISU Torchbearer", "Table Tennis Athlete", "Photographer"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById("typing-text");
+
+        function type() {
+          const currentWord = words[wordIndex];
+          
+          if (isDeleting) {
+            typingElement.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+          } else {
+            typingElement.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+          }
+
+          let typeSpeed = isDeleting ? 50 : 100;
+
+          if (!isDeleting && charIndex === currentWord.length) {
+            typeSpeed = 2000; // 单词打完后停顿 2 秒
+            isDeleting = true;
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            typeSpeed = 500;
+          }
+
+          setTimeout(type, typeSpeed);
+        }
+
+        if (typingElement) type();
+      });
+    </script>
+  </body>
 </html>
