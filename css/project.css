@@ -474,3 +474,199 @@
           grid-template-columns: 1fr;
         }
       }
+
+      /* =========================================================
+   CUS Torino Showcase - 沉浸式浏览器模拟器卡片样式
+========================================================= */
+
+.cus-showcase-card {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border: 1px solid #334155;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cus-showcase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px rgba(37, 99, 235, 0.2);
+  border-color: #3b82f6;
+}
+
+/* 伪浏览器顶部控制栏 (Mac 风格) */
+.browser-header {
+  background-color: #1e293b;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #334155;
+}
+
+.browser-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.browser-dot.red { background-color: #ef4444; }
+.browser-dot.yellow { background-color: #f59e0b; }
+.browser-dot.green { background-color: #10b981; }
+
+.browser-url-bar {
+  background-color: #0f172a;
+  color: #94a3b8;
+  font-family: monospace;
+  font-size: 0.75rem;
+  padding: 4px 16px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  width: 50%;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.browser-badge {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  text-transform: uppercase;
+}
+
+/* 浏览器主体内容区（左侧截图/预览，右侧文字和亮点） */
+.browser-body-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  padding: 30px;
+  align-items: center;
+}
+
+.browser-preview-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #334155;
+  background-color: #000;
+  aspect-ratio: 16 / 10;
+}
+
+.browser-preview-wrapper img,
+.browser-preview-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cus-showcase-card:hover .browser-preview-wrapper img {
+  transform: scale(1.03);
+}
+
+/* 右侧详情与指标 */
+.browser-content-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #ffffff;
+}
+
+.browser-content-side h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.browser-content-side p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* 核心特性胶囊点 */
+.feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.feature-pill {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 炫酷跳转按钮组 */
+.browser-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn-glow {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.5);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #cbd5e1;
+  border: 1px solid #475569;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-color: #94a3b8;
+}
+
+/* 响应式适配 */
+@media (max-width: 900px) {
+  .browser-body-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
