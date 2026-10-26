@@ -23,9 +23,8 @@ body {
   color: #0f172a;
 }
 
-
 /* =========================================================
-   Navbar Layout & Hero
+   Navbar - 街机像素风高科技头部
 ========================================================= */
 
 .navbar {
@@ -42,17 +41,29 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  
+  /* 💡 关键点 1: 保证像素图片极其清晰细腻，不产生模糊混浊感 */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
   z-index: 100;
   overflow: hidden;
+  border-bottom: 4px solid #22c55e;
 }
 
-/* 遮罩层 */
+/* 2. CRT 显像管扫描线 + 提亮遮罩层 */
 .navbar::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.35);
+  /* 💡 关键点 2: 将黑色遮罩浓度从 0.45 降低到 0.15~0.2，并使用较浅的扫描线 */
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), rgba(0, 0, 0, 0.18); 
+  background-size: 100% 4px;
   z-index: 0;
+  pointer-events: none;
 }
 
 /* navbar 内元素浮到遮罩之上 */
@@ -61,38 +72,103 @@ body {
   z-index: 1;
 }
 
-/* 导航标题 */
+/* 导航标题品牌包装 */
 .nav-title-link {
   text-decoration: none;
 }
 
+.pixel-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pixel-icon {
+  font-size: 2rem;
+  animation: bounceDino 1s infinite alternate;
+}
+
+@keyframes bounceDino {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
 .nav-title {
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-family: 'Press Start 2P', monospace, sans-serif !important;
+  font-size: 2.2rem !important;
+  font-weight: 400;
   color: #ffffff;
+  /* 💡 关键点 3: 背景变亮后，加深文字阴影（黑边）以保证极佳的可读性 */
+  text-shadow: 
+    3px 3px 0px #000000, 
+    -2px -2px 0px #000000,
+    2px -2px 0px #000000,
+    -2px 2px 0px #000000,
+    0 0 12px rgba(34, 197, 94, 0.8);
   line-height: 1;
 }
 
+/* 闪烁的光标 */
+.pixel-blink {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2rem;
+  color: #22c55e;
+  text-shadow: 2px 2px 0px #000000;
+  animation: pixelBlink 0.8s infinite steps(1);
+}
+
+@keyframes pixelBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
 /* =========================================================
-   Button Visual Override
+   1. 真正的街机游戏风格按钮 (Arcade Press Start Button)
 ========================================================= */
 
-.navbar .button {
-  background-color: rgba(255, 255, 255, 0.25);
-  color: white;
-  border: 1px solid white;
-  padding: 10px 20px;
-  border-radius: 8px;
+.navbar .button.pixel-arcade-btn {
+  position: relative;
+  background: linear-gradient(135deg, #22c55e, #16a34a); /* 经典的街机绿茵开始键色 */
+  color: #0f172a;
+  border: 2px solid #ffffff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
   text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 6px 0 #14532d, 0 10px 20px rgba(0, 0, 0, 0.3); /* 强烈的物理街机键帽立体阴影 */
+  transition: all 0.08s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.navbar .button:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+/* 按钮上的小 LED 闪烁灯 */
+.btn-indicator {
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #ffffff;
+  animation: coinBlink 0.6s infinite alternate;
 }
 
+@keyframes coinBlink {
+  0% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+/* 模拟按下街机实体按键的机械下陷反馈 */
+.navbar .button.pixel-arcade-btn:hover {
+  transform: translateY(3px); /* 悬停时微微下浮 */
+  box-shadow: 0 3px 0 #14532d, 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .button.pixel-arcade-btn:active {
+  transform: translateY(6px); /* 点击瞬间彻底凹陷进面板 */
+  box-shadow: 0 0px 0 #14532d, 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 
 /* =========================================================
    Main Page Layout (全站自适应统一标准)
@@ -327,6 +403,51 @@ body {
 .blink-cursor {
   color: #38bdf8;
   animation: blink 0.8s infinite;
+}
+
+/* =========================================================
+   2. 网页日夜模式自动切换 (Auto Dark/Light Arcade Theme)
+========================================================= */
+
+/* 默认：根据操作系统的偏好自动适配（日间/夜间） */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #0f172a;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --sub-text: #64748b;
+}
+
+/* 如果系统开启了暗黑模式（Night Mode）或者当前时间在夜晚 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #090d16;
+    --text-color: #f8fafc;
+    --card-bg: #0f172a;
+    --card-border: #1e293b;
+    --sub-text: #94a3b8;
+  }
+}
+
+/* 将变量应用到全局网页世界 */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* 联动项目卡片、背景等自适应日夜 */
+.project-card, .video-card {
+  background-color: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+}
+
+.project-card .project-title, .video-meta h4 {
+  color: var(--text-color) !important;
+}
+
+.project-card .project-card-text, .video-meta p {
+  color: var(--sub-text) !important;
 }
 
 
@@ -808,5 +929,120 @@ body {
   .float-btn {
     width: 40px;
     height: 40px;
+  }
+}
+
+/* =========================================================
+   Footer 
+========================================================= */
+
+#footer {
+  margin-top: 100px;
+  padding: 30px 0 50px 0;
+  background-color: transparent !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.footer-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #22c55e, transparent);
+  opacity: 0.6;
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 像素极客签名 + 绿色呼吸小灯容器 */
+.footer-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+/* 绿色小灯（脉冲呼吸动画） */
+.footer-status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+  animation: footerPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes footerPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 6px #22c55e;
+  }
+  50% {
+    transform: scale(0.85);
+    opacity: 0.4;
+    box-shadow: 0 0 2px #22c55e;
+  }
+}
+
+/* 社交图标横向排列 */
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-socials .icon-link {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.footer-socials .icon-link:hover {
+  background-color: #0f172a;
+  border-color: #22c55e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+}
+
+.footer-socials .icon-link:hover .footer-icon {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* 响应式适配 */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
   }
 }
