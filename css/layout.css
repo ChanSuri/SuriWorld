@@ -407,48 +407,111 @@ body {
 }
 
 /* =========================================================
-   2. 网页日夜模式自动切换 (Auto Dark/Light Arcade Theme)
+   Ultimate Day/Night Mode Variables & Auto-Switching
 ========================================================= */
 
-/* 默认：根据操作系统的偏好自动适配（日间/夜间） */
+/* 1. 默认日间模式 (Light Mode) 变量定义 */
 :root {
   --bg-color: #ffffff;
-  --text-color: #0f172a;
-  --card-bg: #ffffff;
-  --card-border: #e2e8f0;
-  --sub-text: #64748b;
+  --text-main: #0f172a;        /* 主标题深色 */
+  --text-sub: #64748b;         /* 次要描述灰蓝色 */
+  --card-bg: #ffffff;          /* 卡片背景 */
+  --card-border: #e2e8f0;      /* 卡片边框 */
+  
+  /* 按钮与标签通用变量 */
+  --btn-bg: transparent;
+  --btn-text: #0f172a;
+  --btn-border: #0f172a;
+  --btn-hover-bg: #0f172a;
+  --btn-hover-text: #ffffff;
+  
+  --tag-bg: #f1f5f9;
+  --tag-text: #334155;
+  --tag-border: #e2e8f0;
 }
 
-/* 如果系统开启了暗黑模式（Night Mode）或者当前时间在夜晚 */
+/* 2. 夜间模式 (Dark Mode) 变量定义：自动检测系统偏好或时间 */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #090d16;
-    --text-color: #f8fafc;
-    --card-bg: #0f172a;
-    --card-border: #1e293b;
-    --sub-text: #94a3b8;
+    --text-main: #f8fafc;        /* 主标题反转为亮白 */
+    --text-sub: #94a3b8;         /* 次要描述反转为亮灰 */
+    --card-bg: #0f172a;          /* 卡片反转为深色 */
+    --card-border: #1e293b;      /* 深色卡片边框 */
+    
+    /* 按钮与标签在夜间自动反转颜色 */
+    --btn-bg: transparent;
+    --btn-text: #f8fafc;
+    --btn-border: #94a3b8;
+    --btn-hover-bg: #f8fafc;
+    --btn-hover-text: #0f172a;
+    
+    --tag-bg: #1e293b;
+    --tag-text: #cbd5e1;
+    --tag-border: #334155;
   }
 }
 
-/* 将变量应用到全局网页世界 */
+
+/* =========================================================
+   3. 将变量全面应用到全局页面组件
+========================================================= */
+
 body {
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--text-main);
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* 联动项目卡片、背景等自适应日夜 */
-.project-card, .video-card {
+/* 主标题与副标题自适应 */
+.main-title, .subheader-text, .project-title, .header-text .main-title {
+  color: var(--text-main) !important;
+}
+
+.body-text, .hero-description, .hero-hobbies, .project-card-text {
+  color: var(--text-sub) !important;
+}
+
+/* 卡片与网格容器自适应 */
+.project-card, .video-card, .tech-terminal {
   background-color: var(--card-bg) !important;
   border-color: var(--card-border) !important;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
-.project-card .project-title, .video-meta h4 {
-  color: var(--text-color) !important;
+/* 身份标签 (Tags) 自动反转 */
+.tag {
+  background-color: var(--tag-bg) !important;
+  color: var(--tag-text) !important;
+  border-color: var(--tag-border) !important;
 }
 
-.project-card .project-card-text, .video-meta p {
-  color: var(--sub-text) !important;
+
+/* =========================================================
+   4. 普通按钮 (Buttons) 完美日夜反转
+========================================================= */
+
+.button {
+  background-color: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
+  border: 1px solid var(--btn-border) !important;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--btn-hover-bg) !important;
+  color: var(--btn-hover-text) !important;
+}
+
+.button:hover .right-arrow-icon {
+  filter: brightness(0) invert(var(--arrow-invert, 0));
+}
+
+/* 针对深色模式下反转箭头的辅助变量 */
+@media (prefers-color-scheme: dark) {
+  .button:hover .right-arrow-icon {
+    filter: brightness(0); /* 夜间悬停时图标变黑以适配白色按钮底 */
+  }
 }
 
 
