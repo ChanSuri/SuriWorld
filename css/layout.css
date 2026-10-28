@@ -486,10 +486,6 @@ body.dark-theme .tech-terminal .blink-cursor {
 /* =========================================================
    7. Unified Floating Navigation (Controls Stack)
 ========================================================= */
-/* =========================================================
-   Unified Modern Floating Navigation (Controls Stack)
-   - 完美支持日间“高级浅灰”与夜间“深炭灰”的高级质感
-========================================================= */
 
 .floating-nav-container {
   position: fixed;
@@ -589,6 +585,7 @@ body.dark-theme .float-btn:hover {
     height: 40px;
   }
 }
+
 
 /* =========================================================
    8. My Shows / Projects - Modern 4-Column Grid

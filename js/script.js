@@ -63,13 +63,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // 注意：给日夜切换按钮也加上了 scroll-fade 类，让它和回到顶部按钮拥有相同的淡入淡出特性
   const navHTML = `
     <div class="floating-nav-container">
-      <!-- 1. 日夜切换按钮 (滚动后淡入) -->
+
+      <!-- 1. 返回主页按钮 (常驻，仅子页面显示) -->
+      ${homeBtnHTML}
+
+      <!-- 2. 日夜切换按钮 (滚动后淡入) -->
       <button id="theme-toggle-btn" class="float-btn scroll-fade" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
         <span id="theme-icon">🌙</span>
       </button>
-
-      <!-- 2. 返回主页按钮 (常驻，仅子页面显示) -->
-      ${homeBtnHTML}
 
       <!-- 3. 回到顶部按钮 (滚动后淡入) -->
       <button id="back-to-top-btn" class="float-btn scroll-fade" title="Back to Top" aria-label="Back to Top">
