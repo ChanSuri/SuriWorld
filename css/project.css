@@ -115,6 +115,7 @@ body.dark-theme .project-badge {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  margin-top: 40px;
 }
 
 .project-item-card {

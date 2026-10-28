@@ -1,18 +1,19 @@
 /* =========================================================
-   Visuals & Lens Gallery Styles (visuals.css - Optimized)
+   Visuals & Lens Gallery Premium Styles (visuals.css)
+   - 高級感写真展厅 layout + 日夜模式全自动自适应
 ========================================================= */
 
-/* 1. 主体内容响应式容器优化 */
+/* 1. 主体内容响应式容器 */
 #main-content {
   max-width: 1200px;
-  margin: 200px auto 100px auto;
-  padding: 0 40px;
+  margin: 220px auto 100px auto;
+  padding: 0 32px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 50px;
 }
 
-/* 2. 页面头部样式 */
+/* 2. 页面头部展厅风格排版 */
 #project-header {
   display: flex;
   flex-direction: column;
@@ -20,120 +21,156 @@
 }
 
 #project-header .main-title {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--text-main, #0f172a);
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  transition: color 0.3s ease;
 }
 
 #project-header .body-text {
   font-size: 1.1rem;
-  color: #4b5563;
+  color: var(--text-sub, #64748b);
   line-height: 1.6;
   max-width: 800px;
+  transition: color 0.3s ease;
 }
 
-/* 3. 第一级：大洲切换栏 (支持手机横向滚动) */
+/* 3. 第一级：大洲切换栏 (Continent Tabs) */
 .continent-tabs {
   display: flex;
-  gap: 12px;
-  border-bottom: 2px solid #e2e8f0;
+  gap: 16px;
+  border-bottom: 2px solid var(--card-border, #e2e8f0);
   padding-bottom: 12px;
   overflow-x: auto;
   white-space: nowrap;
-  scrollbar-width: none; /* Firefox 隐藏滚动条 */
+  scrollbar-width: none;
+  transition: border-color 0.3s ease;
 }
 
 .continent-tabs::-webkit-scrollbar {
-  display: none; /* Chrome/Safari 隐藏滚动条 */
+  display: none;
 }
 
 .tab-btn {
   background: none;
   border: none;
-  padding: 8px 18px;
-  font-size: 1rem;
+  padding: 10px 20px;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #64748b;
+  color: var(--text-sub, #64748b);
   cursor: pointer;
   position: relative;
-  transition: color 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
+  border-radius: 8px 8px 0 0;
+}
+
+.tab-btn:hover {
+  color: var(--text-main, #0f172a);
+  background: var(--tag-bg, rgba(0, 0, 0, 0.03));
 }
 
 .tab-btn.active {
-  color: #2563eb;
+  color: #2563eb !important;
+}
+
+body.dark-theme .tab-btn.active {
+  color: #60a5fa !important;
 }
 
 .tab-btn.active::after {
   content: '';
   position: absolute;
-  bottom: -13px;
+  bottom: -14px;
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: #2563eb;
-  border-radius: 2px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.6);
 }
 
-/* 4. 第二级：国家筛选芯片 (Chips) */
+/* 4. 第二级：国家筛选芯片 (Country Chips) */
 .country-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: -30px; /* 紧凑衔接大洲栏 */
+  margin-top: -20px;
 }
 
 .country-chip {
-  background-color: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.875rem;
+  background-color: var(--tag-bg, #f1f5f9);
+  border: 1px solid var(--card-border, #cbd5e1);
+  padding: 7px 18px;
+  border-radius: 24px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #334155;
+  color: var(--tag-text, #334155);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.country-chip:hover,
+.country-chip:hover {
+  background-color: var(--text-main, #0f172a);
+  color: var(--bg-color, #ffffff);
+  border-color: var(--text-main, #0f172a);
+  transform: translateY(-2px);
+}
+
 .country-chip.active {
-  background-color: #0f172a;
-  color: #ffffff;
-  border-color: #0f172a;
+  background-color: var(--text-main, #0f172a) !important;
+  color: var(--bg-color, #ffffff) !important;
+  border-color: var(--text-main, #0f172a) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* 5. 画廊网格：现代化 3 列布局 */
+body.dark-theme .country-chip.active {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #f8fafc !important;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+}
+
+/* 5. 展厅级 3 列相册网格 */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 32px;
 }
 
-/* 6. 国家/城市相册卡片 */
+/* 6. 国家/城市相册卡片 (Premium Photo Card) */
 .country-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border, #e2e8f0);
+  border-radius: 18px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.3s ease, 
+              border-color 0.3s ease;
 }
 
 .country-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  border-color: rgba(37, 99, 235, 0.3);
 }
 
-/* 7. 轮播容器 */
+body.dark-theme .country-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+/* 7. 沉浸式相册轮播容器 */
 .slider-container {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  background-color: #0f172a;
+  background-color: #000000;
   overflow: hidden;
 }
 
@@ -141,33 +178,39 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none; 
-  transition: opacity 0.3s ease;
+  display: none;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
 }
 
 .slide-img.active {
   display: block;
 }
 
-/* 轮播左右切换按钮 */
+.country-card:hover .slide-img.active {
+  transform: scale(1.05); /* 悬停微放大摄影作品 */
+}
+
+/* 轮播毛玻璃切换按钮 */
 .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(15, 23, 42, 0.6);
-  color: white;
-  border: none;
-  width: 36px;
-  height: 36px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   opacity: 0;
-  transition: opacity 0.2s ease, background 0.2s ease;
-  backdrop-filter: blur(4px);
+  transition: opacity 0.25s ease, background 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2;
 }
 
 .slider-container:hover .slider-btn {
@@ -176,77 +219,88 @@
 
 .slider-btn:hover {
   background: rgba(15, 23, 42, 0.9);
+  transform: translateY(-50%) scale(1.1);
 }
 
-.prev-btn { left: 12px; }
-.next-btn { right: 12px; }
+.prev-btn { left: 14px; }
+.next-btn { right: 14px; }
 
 /* 照片计数指示器 Badge */
 .photo-count-badge {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(15, 23, 42, 0.7);
-  color: white;
+  bottom: 14px;
+  right: 14px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #ffffff;
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 20px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.5px;
+  z-index: 2;
 }
 
 /* 卡片文字描述区 */
 .card-info {
-  padding: 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background-color: #ffffff;
+  background-color: var(--card-bg, #ffffff);
   flex-grow: 1;
+  transition: background-color 0.3s ease;
 }
 
 .card-info h4 {
   margin: 0;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-main, #0f172a);
+  transition: color 0.3s ease;
 }
 
 .card-info p {
   margin: 0;
-  font-size: 0.9rem;
-  color: #64748b;
+  font-size: 0.88rem;
+  color: var(--text-sub, #64748b);
   line-height: 1.5;
+  transition: color 0.3s ease;
 }
 
-/* 8. 独立视频模块网格 */
+/* 8. 独立视频模块网格 (Video Section Grid) */
 .video-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 32px;
 }
 
 .video-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border, #e2e8f0);
+  border-radius: 18px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .video-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+}
+
+body.dark-theme .video-card:hover {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
 }
 
 .video-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background-color: #000;
+  background-color: #000000;
 }
 
 .video-wrapper iframe {
@@ -255,47 +309,46 @@
   border: none;
 }
 
-/* =========================
-   响应式断点适配 (Responsive Media Queries)
-========================= */
 
-/* 平板端 (≤1024px) */
+/* =========================================================
+   响应式适配 (Responsive Media Queries)
+========================================================= */
+
 @media (max-width: 1024px) {
   #main-content {
-    margin: 180px 40px 80px 40px;
-    padding: 0 20px;
+    margin: 180px auto 80px auto;
+    padding: 0 24px;
   }
   
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 24px;
   }
 }
 
-/* 手机端 (≤768px) */
 @media (max-width: 768px) {
   #main-content {
-    margin: 140px 20px 60px 20px;
-    padding: 0;
-    gap: 40px;
+    margin: 140px auto 60px auto;
+    padding: 0 16px;
+    gap: 36px;
   }
 
   #project-header .main-title {
-    font-size: 2.25rem;
+    font-size: 2.3rem;
   }
 
   .gallery-grid, 
   .video-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
 
   .continent-tabs {
-    gap: 8px;
+    gap: 10px;
   }
 
   .tab-btn {
-    padding: 6px 14px;
-    font-size: 0.9rem;
+    padding: 8px 14px;
+    font-size: 0.95rem;
   }
 }
