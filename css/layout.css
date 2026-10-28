@@ -1,5 +1,5 @@
 /* =========================================================
-   Global Reset & Base
+   1. Global Reset & Core Base
 ========================================================= */
 
 * {
@@ -14,17 +14,78 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 引入 Google 经典的复古像素字体 */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* =========================================================
+   2. Day / Night Theme Variables & Auto-Adaptation System
+========================================================= */
+
+:root {
+  --bg-color: #ffffff;
+  --text-main: #0f172a;
+  --text-sub: #64748b;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --tag-bg: #f1f5f9;
+  --tag-text: #334155;
+  --tag-border: #e2e8f0;
+  --float-btn-bg: rgba(15, 23, 42, 0.75);
+  --float-btn-color: #ffffff;
+  --btn-border: #0f172a;
+  --btn-hover-bg: #0f172a;
+  --btn-hover-text: #ffffff;
+}
+
+body.dark-theme {
+  --bg-color: #111827 !important;      /* 💡 调柔和：从纯黑改为有质感的深炭灰，保护眼睛且图标不丢失 */
+  --text-main: #f8fafc !important;
+  --text-sub: #94a3b8 !important;
+  --card-bg: #1f2937 !important;       /* 💡 卡片底色改为略浅的层叠灰 `#1f2937` */
+  --card-border: #374151 !important;   /* 卡片边框 */
+  --tag-bg: #374151 !important;
+  --tag-text: #f3f4f6 !important;
+  --tag-border: #4b5563 !important;
+  --float-btn-bg: rgba(31, 41, 55, 0.85);
+  --float-btn-color: #f3f4f6;
+  --btn-border: #9ca3af;
+  --btn-hover-bg: #f9fafb;
+  --btn-hover-text: #111827;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #0f172a;
+  background-color: var(--bg-color) !important;
+  color: var(--text-main) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* 全局标题与正文变量绑定 */
+.main-title, .subheader-text, .project-title, h1, h2, h3, h4 {
+  color: var(--text-main) !important;
+}
+
+.body-text, .hero-description, .hero-hobbies, .project-card-text, p {
+  color: var(--text-sub) !important;
+}
+
+.project-card, .video-card{
+  background-color: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+}
+
+.tag, .identity-tags .tag {
+  background-color: var(--tag-bg) !important;
+  color: var(--tag-text) !important;
+  border-color: var(--tag-border) !important;
+}
+
+
 /* =========================================================
-   Navbar - 街机像素风高科技头部
+   3. Navbar - 街机像素风高科技头部
 ========================================================= */
 
 .navbar {
@@ -41,22 +102,18 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
-  /* 💡 关键点 1: 保证像素图片极其清晰细腻，不产生模糊混浊感 */
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-
   z-index: 100;
   overflow: hidden;
   border-bottom: 4px solid #22c55e;
 }
 
-/* 2. CRT 显像管扫描线 + 提亮遮罩层 */
+/* CRT 显像管扫描线 + 提亮遮罩层 */
 .navbar::before {
   content: "";
   position: absolute;
   inset: 0;
-  /* 💡 关键点 2: 将黑色遮罩浓度从 0.45 降低到 0.15~0.2，并使用较浅的扫描线 */
   background: linear-gradient(
     rgba(18, 16, 16, 0) 50%, 
     rgba(0, 0, 0, 0.25) 50%
@@ -66,13 +123,11 @@ body {
   pointer-events: none;
 }
 
-/* navbar 内元素浮到遮罩之上 */
 .navbar > * {
   position: relative;
   z-index: 1;
 }
 
-/* 导航标题品牌包装 */
 .nav-title-link {
   text-decoration: none;
 }
@@ -97,8 +152,7 @@ body {
   font-family: 'Press Start 2P', monospace, sans-serif !important;
   font-size: 2.2rem !important;
   font-weight: 400;
-  color: #ffffff;
-  /* 💡 关键点 3: 背景变亮后，加深文字阴影（黑边）以保证极佳的可读性 */
+  color: #ffffff !important;
   text-shadow: 
     3px 3px 0px #000000, 
     -2px -2px 0px #000000,
@@ -108,7 +162,6 @@ body {
   line-height: 1;
 }
 
-/* 闪烁的光标 */
 .pixel-blink {
   font-family: 'Press Start 2P', monospace;
   font-size: 2rem;
@@ -122,29 +175,25 @@ body {
   50% { opacity: 0; }
 }
 
-/* =========================================================
-   1. 真正的街机游戏风格按钮 (Arcade Press Start Button)
-========================================================= */
-
+/* 街机游戏风格按钮 (Arcade Press Start Button) */
 .navbar .button.pixel-arcade-btn {
   position: relative;
-  background: linear-gradient(135deg, #22c55e, #16a34a); /* 经典的街机绿茵开始键色 */
-  color: #0f172a;
-  border: 2px solid #ffffff;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #0f172a !important;
+  border: 2px solid #ffffff !important;
   padding: 12px 20px;
   border-radius: 4px;
   font-family: 'Press Start 2P', monospace;
   font-size: 0.65rem;
   text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 6px 0 #14532d, 0 10px 20px rgba(0, 0, 0, 0.3); /* 强烈的物理街机键帽立体阴影 */
+  box-shadow: 0 6px 0 #14532d, 0 10px 20px rgba(0, 0, 0, 0.3);
   transition: all 0.08s ease;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* 按钮上的小 LED 闪烁灯 */
 .btn-indicator {
   width: 6px;
   height: 6px;
@@ -159,30 +208,30 @@ body {
   100% { opacity: 1; }
 }
 
-/* 模拟按下街机实体按键的机械下陷反馈 */
 .navbar .button.pixel-arcade-btn:hover {
-  transform: translateY(3px); /* 悬停时微微下浮 */
+  transform: translateY(3px);
   box-shadow: 0 3px 0 #14532d, 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .navbar .button.pixel-arcade-btn:active {
-  transform: translateY(6px); /* 点击瞬间彻底凹陷进面板 */
+  transform: translateY(6px);
   box-shadow: 0 0px 0 #14532d, 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+
 /* =========================================================
-   Main Page Layout (全站自适应统一标准)
+   4. Main Page Layout Container
 ========================================================= */
 
 #main-content {
-  max-width: 1080px; /* 更紧凑精致，两侧会自动留出更多优雅空白 */
+  max-width: 1080px;
   margin: 220px auto 100px auto;
   padding: 0 32px;
 }
 
 
 /* =========================================================
-   Portfolio Header & Typing Effect
+   5. Portfolio Header & Typing Effect
 ========================================================= */
 
 #portfolio-header {
@@ -215,7 +264,6 @@ body {
 .header-text .main-title {
   font-size: 2.75rem;
   font-weight: 800;
-  color: #111827;
   margin: 0;
   line-height: 1.2;
 }
@@ -253,14 +301,12 @@ body {
   margin-top: 16px;
   font-size: 1.05rem;
   line-height: 1.6;
-  color: #4b5563;
 }
 
 .header-text .body-text p {
   margin: 0;
 }
 
-/* 多重身份 Badge 标签 */
 .identity-tags {
   display: flex;
   flex-wrap: wrap;
@@ -272,38 +318,23 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
   padding: 4px 10px;
-  background-color: #f1f5f9;
-  color: #334155;
   border-radius: 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--tag-border);
   transition: all 0.2s ease;
-}
-
-.identity-tags .tag:hover {
-  background-color: #e2e8f0;
-  color: #0f172a;
 }
 
 .hero-tagline {
   font-size: 1.15rem;
   font-weight: 600;
-  color: #1e293b;
   border-left: 3px solid #2563eb;
   padding-left: 12px;
 }
 
-.hero-description {
-  color: #4b5563;
-  line-height: 1.6;
-}
-
 .hero-hobbies {
-  color: #6b7280;
   font-style: italic;
   line-height: 1.6;
 }
 
-/* 按钮 Hover 微动效 */
 #portfolio-header-text-container .button {
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
@@ -322,7 +353,7 @@ body {
 
 
 /* =========================================================
-   About Section & Tech Terminal (极客终端)
+   6. About Section & Tech Terminal
 ========================================================= */
 
 #about-section {
@@ -344,179 +375,223 @@ body {
   gap: 20px;
 }
 
-/* 科技终端控制台 */
+/* 1. 默认日间模式下的 macOS 浅色终端风格 (仿 macOS Terminal Light 经典主题) */
 .tech-terminal {
-  background-color: #0f172a;
+  background-color: #f6f8fa !important;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.25);
-  border: 1px solid #1e293b;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+  border: 1px solid #d0d7de !important;
   font-family: 'Fira Code', 'Consolas', monospace;
   font-size: 0.85rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.terminal-header {
-  background-color: #1e293b;
+.tech-terminal .terminal-header {
+  background-color: #e1e4e8 !important;
   padding: 10px 16px;
   display: flex;
   align-items: center;
   gap: 8px;
+  border-bottom: 1px solid #d0d7de;
+  transition: background-color 0.3s ease;
 }
 
 .terminal-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.15);
 }
 
-.terminal-dot.red { background-color: #ef4444; }
-.terminal-dot.yellow { background-color: #f59e0b; }
-.terminal-dot.green { background-color: #10b981; }
+.terminal-dot.red { background-color: #ff5f56; border: 1px solid #e0443e; }
+.terminal-dot.yellow { background-color: #ffbd2e; border: 1px solid #dea123; }
+.terminal-dot.green { background-color: #27c93f; border: 1px solid #1aab29; }
 
-.terminal-title {
-  color: #94a3b8;
+.tech-terminal .terminal-title {
+  color: #57606a !important;
   font-size: 0.75rem;
   margin-left: 8px;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-.terminal-body {
+.tech-terminal .terminal-body {
   padding: 20px;
-  color: #e2e8f0;
+  background-color: #ffffff !important;
+  color: #24292f !important;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.terminal-body p {
+.tech-terminal .terminal-body p {
   margin: 0;
   line-height: 1.5;
 }
 
-.terminal-body .prompt {
-  color: #38bdf8;
+.tech-terminal .terminal-body .prompt {
+  color: #0969da !important; /* 浅色模式下的经典终端蓝色命令符 */
   font-weight: bold;
 }
 
-.terminal-body .val {
-  color: #a7f3d0;
+.tech-terminal .terminal-body .val {
+  color: #116329 !important; /* 浅色模式下的高亮绿字符串 */
 }
 
-.blink-cursor {
-  color: #38bdf8;
+.tech-terminal .blink-cursor {
+  color: #0969da !important;
   animation: blink 0.8s infinite;
 }
 
+
 /* =========================================================
-   Ultimate Day/Night Mode Variables & Auto-Switching
+   2. 夜间模式 (.dark-theme) 下的 macOS 深色终端风格 (Dark Charcoal)
 ========================================================= */
 
-/* 1. 默认日间模式 (Light Mode) 变量定义 */
-:root {
-  --bg-color: #ffffff;
-  --text-main: #0f172a;        /* 主标题深色 */
-  --text-sub: #64748b;         /* 次要描述灰蓝色 */
-  --card-bg: #ffffff;          /* 卡片背景 */
-  --card-border: #e2e8f0;      /* 卡片边框 */
-  
-  /* 按钮与标签通用变量 */
-  --btn-bg: transparent;
-  --btn-text: #0f172a;
-  --btn-border: #0f172a;
-  --btn-hover-bg: #0f172a;
-  --btn-hover-text: #ffffff;
-  
-  --tag-bg: #f1f5f9;
-  --tag-text: #334155;
-  --tag-border: #e2e8f0;
+body.dark-theme .tech-terminal {
+  background-color: #161b22 !important;
+  border-color: #30363d !important;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
 }
 
-/* 2. 夜间模式 (Dark Mode) 变量定义：自动检测系统偏好或时间 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #090d16;
-    --text-main: #f8fafc;        /* 主标题反转为亮白 */
-    --text-sub: #94a3b8;         /* 次要描述反转为亮灰 */
-    --card-bg: #0f172a;          /* 卡片反转为深色 */
-    --card-border: #1e293b;      /* 深色卡片边框 */
-    
-    /* 按钮与标签在夜间自动反转颜色 */
-    --btn-bg: transparent;
-    --btn-text: #f8fafc;
-    --btn-border: #94a3b8;
-    --btn-hover-bg: #f8fafc;
-    --btn-hover-text: #0f172a;
-    
-    --tag-bg: #1e293b;
-    --tag-text: #cbd5e1;
-    --tag-border: #334155;
+body.dark-theme .tech-terminal .terminal-header {
+  background-color: #21262d !important;
+  border-bottom: 1px solid #30363d;
+}
+
+body.dark-theme .tech-terminal .terminal-title {
+  color: #8b949e !important;
+}
+
+body.dark-theme .tech-terminal .terminal-body {
+  background-color: #0d1117 !important;
+  color: #c9d1d9 !important;
+}
+
+body.dark-theme .tech-terminal .terminal-body .prompt {
+  color: #38bdf8 !important; /* 暗夜模式下的亮青色终端符 */
+  font-weight: bold;
+}
+
+body.dark-theme .tech-terminal .terminal-body .val {
+  color: #a7f3d0 !important; /* 暗夜模式下的薄荷绿字符串 */
+}
+
+body.dark-theme .tech-terminal .blink-cursor {
+  color: #38bdf8 !important;
+}
+
+/* =========================================================
+   7. Unified Floating Navigation (Controls Stack)
+========================================================= */
+/* =========================================================
+   Unified Modern Floating Navigation (Controls Stack)
+   - 完美支持日间“高级浅灰”与夜间“深炭灰”的高级质感
+========================================================= */
+
+.floating-nav-container {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+}
+
+/* 1. 默认日间模式 (Light Mode)：采用高级工业浅灰/磨砂银（不与纯白背景撞色） */
+.float-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(241, 245, 249, 0.9) !important;  /* 带有质感的浅银灰 #f1f5f9 */
+  color: #1e293b !important;                         /* 图标为深邃炭黑 */
+  border: 1px solid #cbd5e1 !important;              /* 精致的冷灰色边框 */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);   /* 柔和细腻的工业风阴影 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.float-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor !important;
+  transition: transform 0.2s ease;
+}
+
+/* 日间模式 Hover 高亮：呈现深色高质感反转 */
+.float-btn:hover {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
+}
+
+
+/* 2. 夜间模式 (.dark-theme)：深炭灰与亮白的完美反转 */
+body.dark-theme .float-btn {
+  background: rgba(31, 41, 55, 0.85) !important;    /* 柔和深炭灰 #1f2937 */
+  color: #f3f4f6 !important;                         /* 亮白图标 */
+  border: 1px solid #4b5563 !important;              /* 暗夜质感边框 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* 夜间模式 Hover 高亮 */
+body.dark-theme .float-btn:hover {
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 12px 24px rgba(255, 255, 255, 0.25);
+}
+
+
+/* 3. 滚动淡入淡出动效 */
+.float-btn.scroll-fade {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+.float-btn.scroll-fade.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#back-to-top-btn:hover svg {
+  transform: translateY(-2px);
+}
+
+.float-home-btn:hover svg {
+  transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .floating-nav-container {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+  .float-btn {
+    width: 40px;
+    height: 40px;
   }
 }
 
-
 /* =========================================================
-   3. 将变量全面应用到全局页面组件
-========================================================= */
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-/* 主标题与副标题自适应 */
-.main-title, .subheader-text, .project-title, .header-text .main-title {
-  color: var(--text-main) !important;
-}
-
-.body-text, .hero-description, .hero-hobbies, .project-card-text {
-  color: var(--text-sub) !important;
-}
-
-/* 卡片与网格容器自适应 */
-.project-card, .video-card, .tech-terminal {
-  background-color: var(--card-bg) !important;
-  border-color: var(--card-border) !important;
-  transition: background-color 0.4s ease, border-color 0.4s ease;
-}
-
-/* 身份标签 (Tags) 自动反转 */
-.tag {
-  background-color: var(--tag-bg) !important;
-  color: var(--tag-text) !important;
-  border-color: var(--tag-border) !important;
-}
-
-
-/* =========================================================
-   4. 普通按钮 (Buttons) 完美日夜反转
-========================================================= */
-
-.button {
-  background-color: var(--btn-bg) !important;
-  color: var(--btn-text) !important;
-  border: 1px solid var(--btn-border) !important;
-  transition: all 0.2s ease;
-}
-
-.button:hover {
-  background-color: var(--btn-hover-bg) !important;
-  color: var(--btn-hover-text) !important;
-}
-
-.button:hover .right-arrow-icon {
-  filter: brightness(0) invert(var(--arrow-invert, 0));
-}
-
-/* 针对深色模式下反转箭头的辅助变量 */
-@media (prefers-color-scheme: dark) {
-  .button:hover .right-arrow-icon {
-    filter: brightness(0); /* 夜间悬停时图标变黑以适配白色按钮底 */
-  }
-}
-
-
-/* =========================================================
-   My Shows / Projects - Modern 4-Column Card Grid
+   8. My Shows / Projects - Modern 4-Column Grid
 ========================================================= */
 
 #my-work-section {
@@ -526,7 +601,6 @@ body {
   width: 100%;
 }
 
-/* 精致 4 列网格 (gap: 18px) */
 .projects-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -534,11 +608,9 @@ body {
   width: 100%;
 }
 
-/* 卡片主体：现代圆角与发光动效 */
 .project-card {
   max-width: 100%;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--card-border);
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -557,12 +629,11 @@ body {
   box-shadow: 0 12px 24px rgba(37, 99, 235, 0.08);
 }
 
-/* 像素图片容器 */
 .project-image {
   width: 100%;
   height: 120px;
   object-fit: contain;
-  background-color: #f8fafc;
+  background-color: var(--tag-bg);
   border-radius: 10px;
   padding: 12px;
   transition: transform 0.3s ease;
@@ -572,7 +643,6 @@ body {
   transform: scale(1.04);
 }
 
-/* 文字区排版 */
 .project-card-text-container {
   display: flex;
   flex-direction: column;
@@ -584,14 +654,12 @@ body {
 .project-card .project-title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #0f172a;
   line-height: 1.25;
   margin: 0;
 }
 
 .project-card .project-card-text {
   font-size: 0.8rem;
-  color: #64748b;
   line-height: 1.45;
   margin: 0;
   overflow: visible;
@@ -599,15 +667,15 @@ body {
   white-space: normal;
 }
 
-/* 胶囊微动效按钮 */
+/* 按钮日夜模式高优先强制反转 */
 .project-card .button {
   width: 100%;
   margin: 4px 0 0 0;
   padding: 8px 12px;
   border-radius: 20px;
-  border: 1px solid #0f172a;
-  background: transparent;
-  color: #0f172a;
+  border: 1px solid var(--text-main) !important;
+  background: transparent !important;
+  color: var(--text-main) !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -625,21 +693,29 @@ body {
   width: 12px;
   height: 12px;
   transition: transform 0.2s ease;
+  filter: brightness(0) invert(var(--arrow-invert, 0));
 }
 
 .project-card .button:hover {
-  background-color: #0f172a;
-  color: #ffffff;
+  background-color: var(--text-main) !important;
+  color: var(--bg-color) !important;
+}
+
+body.dark-theme .project-card .right-arrow-icon {
+  filter: brightness(0) invert(1);
 }
 
 .project-card .button:hover .right-arrow-icon {
-  filter: brightness(0) invert(1);
   transform: translateX(3px);
+}
+
+body.dark-theme .project-card .button:hover .right-arrow-icon {
+  filter: brightness(0);
 }
 
 
 /* =========================================================
-   Project Pages / Media Row / Gallery
+   9. Project Pages / Media Row / Gallery
 ========================================================= */
 
 #project-header,
@@ -676,7 +752,6 @@ body {
   border-radius: 8px;
 }
 
-/* Project Gallery Grid */
 #project-gallery {
   display: flex;
   flex-direction: column;
@@ -706,7 +781,7 @@ body {
 
 
 /* =========================================================
-   Media Page Styles
+   10. Media Page Styles
 ========================================================= */
 
 .fisu-link-card {
@@ -724,12 +799,12 @@ body {
 .fisu-link-info h3 {
   margin: 8px 0;
   font-size: 1.3rem;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .fisu-link-info p {
   margin: 0;
-  color: #94a3b8;
+  color: #94a3b8 !important;
   font-size: 0.95rem;
 }
 
@@ -783,8 +858,7 @@ body {
 .video-card {
   display: flex;
   flex-direction: column;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--card-border);
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -822,88 +896,128 @@ body {
 .video-meta h4 {
   margin: 0;
   font-size: 1rem;
-  color: #0f172a;
 }
 
 .video-meta p {
   margin: 0;
   font-size: 0.85rem;
-  color: #64748b;
   line-height: 1.4;
 }
 
 
 /* =========================================================
-   Modern Floating Navigation (Back to Top & Home)
+   11. Footer Section
 ========================================================= */
 
-.floating-nav-container {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
+#footer {
+  margin-top: 100px;
+  padding: 30px 0 50px 0;
+  background-color: transparent !important;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  z-index: 999;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }
 
-.float-btn {
-  width: 44px;
-  height: 44px;
+.footer-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #22c55e, transparent);
+  opacity: 0.6;
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  color: var(--text-sub);
+  letter-spacing: 0.5px;
+}
+
+.footer-status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #22c55e;
   border-radius: 50%;
-  background: rgba(15, 23, 42, 0.75);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
+  box-shadow: 0 0 8px #22c55e;
+  animation: footerPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes footerPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 6px #22c55e;
+  }
+  50% {
+    transform: scale(0.85);
+    opacity: 0.4;
+    box-shadow: 0 0 2px #22c55e;
+  }
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-socials .icon-link {
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 1;
+  border-radius: 50%;
+  background-color: var(--tag-bg);
+  border: 1px solid var(--card-border);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.float-btn:hover {
-  background: rgba(15, 23, 42, 0.95);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-  border-color: rgba(255, 255, 255, 0.4);
+.footer-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  filter: brightness(0) invert(var(--arrow-invert, 0));
 }
 
-#back-to-top-btn {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+body.dark-theme .footer-icon {
+  filter: brightness(0) invert(1);
 }
 
-#back-to-top-btn.visible {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.float-btn svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  transition: transform 0.2s ease;
-}
-
-#back-to-top-btn:hover svg {
+.footer-socials .icon-link:hover {
+  background-color: var(--text-main);
+  border-color: #22c55e;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
 }
 
-.float-home-btn:hover svg {
+.footer-socials .icon-link:hover .footer-icon {
+  filter: brightness(0) invert(1);
+  opacity: 1;
   transform: scale(1.1);
+}
+
+body.dark-theme .footer-socials .icon-link:hover .footer-icon {
+  filter: brightness(0);
 }
 
 
 /* =========================================================
-   Responsive Breakpoints
+   12. Responsive Breakpoints
 ========================================================= */
 
 @media (max-width: 1200px) {
@@ -947,7 +1061,7 @@ body {
   }
 
   .nav-title {
-    font-size: 2.25rem;
+    font-size: 1.8rem !important;
   }
 
   #main-content {
@@ -977,7 +1091,7 @@ body {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   .projects-container,
   .video-grid,
   .project-gallery-content {
@@ -994,114 +1108,7 @@ body {
     width: 40px;
     height: 40px;
   }
-}
 
-/* =========================================================
-   Footer 
-========================================================= */
-
-#footer {
-  margin-top: 100px;
-  padding: 30px 0 50px 0;
-  background-color: transparent !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-}
-
-.footer-line {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #22c55e, transparent);
-  opacity: 0.6;
-}
-
-.footer-content {
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* 像素极客签名 + 绿色呼吸小灯容器 */
-.footer-tag {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  color: #64748b;
-  letter-spacing: 0.5px;
-}
-
-/* 绿色小灯（脉冲呼吸动画） */
-.footer-status-dot {
-  width: 7px;
-  height: 7px;
-  background-color: #22c55e;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #22c55e;
-  animation: footerPulse 1.8s infinite ease-in-out;
-}
-
-@keyframes footerPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-    box-shadow: 0 0 6px #22c55e;
-  }
-  50% {
-    transform: scale(0.85);
-    opacity: 0.4;
-    box-shadow: 0 0 2px #22c55e;
-  }
-}
-
-/* 社交图标横向排列 */
-.footer-socials {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.footer-socials .icon-link {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.footer-icon {
-  width: 14px;
-  height: 14px;
-  opacity: 0.7;
-  transition: all 0.2s ease;
-}
-
-.footer-socials .icon-link:hover {
-  background-color: #0f172a;
-  border-color: #22c55e;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
-}
-
-.footer-socials .icon-link:hover .footer-icon {
-  filter: brightness(0) invert(1);
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-/* 响应式适配 */
-@media (max-width: 600px) {
   .footer-content {
     flex-direction: column;
     gap: 16px;
@@ -1109,4 +1116,23 @@ body {
     text-align: center;
     padding: 0 20px;
   }
+}
+
+/* =========================================================
+   确保夜间模式下所有黑色图标svg清晰可见
+========================================================= */
+
+body.dark-theme img.footer-icon,
+body.dark-theme .repo-icon,
+body.dark-theme .icon-link img,
+body.dark-theme .github-card img {
+  filter: brightness(0) invert(1) !important; /* 强制将纯黑图标反转为纯白 */
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+body.dark-theme img.footer-icon:hover,
+body.dark-theme .repo-icon:hover,
+body.dark-theme .icon-link img:hover {
+  opacity: 1;
 }

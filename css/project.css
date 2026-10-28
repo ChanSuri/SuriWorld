@@ -10,12 +10,14 @@
 .featured-project-card {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
-  color: #ffffff;
+  background: var(--card-bg, #ffffff);
+  color: var(--text-main, #0f172a);
+  border: 1px solid var(--card-border, #e2e8f0);
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 40px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .featured-content {
@@ -28,9 +30,9 @@
 .project-badge {
   display: inline-block;
   padding: 4px 12px;
-  background-color: rgba(59, 130, 246, 0.3);
-  color: #60a5fa;
-  border: 1px solid rgba(59, 130, 246, 0.5);
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -38,15 +40,21 @@
   width: fit-content;
 }
 
+body.dark-theme .project-badge {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
 .featured-content h3 {
   margin: 0;
   font-size: 1.75rem;
-  color: #ffffff;
+  color: var(--text-main, #0f172a);
 }
 
 .featured-content p {
   margin: 0;
-  color: #94a3b8;
+  color: var(--text-sub, #64748b);
   font-size: 1rem;
   line-height: 1.6;
   max-width: 800px;
@@ -80,8 +88,8 @@
 
 .btn-outline-custom {
   background-color: transparent;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--text-main, #0f172a);
+  border: 1px solid var(--card-border, #cbd5e1);
   padding: 10px 20px;
   border-radius: 8px;
   text-decoration: none;
@@ -94,11 +102,15 @@
 }
 
 .btn-outline-custom:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
+  background-color: var(--tag-bg, rgba(0, 0, 0, 0.05));
+  border-color: var(--text-main, #0f172a);
 }
 
-/* 普通项目网格 (GitHub + Demo 视频) */
+
+/* =========================================================
+   1. 独立恢复：projects-grid (普通项目网格)
+========================================================= */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -106,13 +118,13 @@
 }
 
 .project-item-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border, #e2e8f0);
   border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .project-item-card:hover {
@@ -146,13 +158,13 @@
 .project-info h4 {
   margin: 0;
   font-size: 1.25rem;
-  color: #0f172a;
+  color: var(--text-main, #0f172a);
 }
 
 .project-info p {
   margin: 0;
   font-size: 0.9rem;
-  color: #64748b;
+  color: var(--text-sub, #64748b);
   line-height: 1.5;
 }
 
@@ -166,8 +178,9 @@
 .tech-tag {
   font-size: 0.75rem;
   font-weight: 600;
-  background-color: #f1f5f9;
-  color: #334155;
+  background-color: var(--tag-bg, #f1f5f9);
+  color: var(--tag-text, #334155);
+  border: 1px solid var(--card-border, #e2e8f0);
   padding: 3px 10px;
   border-radius: 6px;
 }
@@ -177,7 +190,7 @@
   gap: 16px;
   margin-top: auto;
   padding-top: 12px;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid var(--card-border, #f1f5f9);
 }
 
 .text-link {
@@ -194,15 +207,9 @@
   text-decoration: underline;
 }
 
-/* 响应式断点 */
-@media (max-width: 900px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* =========================================================
-   Modern GitHub Repositories Grid (projects.css)
+   2. 独立恢复：github-grid (GitHub 实验室卡片网格)
 ========================================================= */
 
 .github-labs-section {
@@ -218,17 +225,16 @@
   gap: 24px;
 }
 
-/* 现代单张卡片 */
 .github-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border, #e2e8f0);
   border-radius: 12px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.3s ease;
 }
 
 .github-card:hover {
@@ -237,7 +243,6 @@
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
 
-/* Header 与 标题 */
 .github-card-header {
   display: flex;
   justify-content: space-between;
@@ -259,7 +264,7 @@
 .repo-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-main, #0f172a);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -271,28 +276,26 @@
 .visibility-badge {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #64748b;
-  background-color: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  color: var(--text-sub, #64748b);
+  background-color: var(--tag-bg, #f1f5f9);
+  border: 1px solid var(--card-border, #e2e8f0);
   padding: 2px 8px;
   border-radius: 12px;
 }
 
-/* 项目描述 */
 .repo-description {
   margin: 0;
   font-size: 0.9rem;
-  color: #4b5563;
+  color: var(--text-sub, #4b5563);
   line-height: 1.5;
 }
 
-/* 底部元数据与按钮 */
 .repo-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 16px;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid var(--card-border, #f1f5f9);
   margin-top: 8px;
 }
 
@@ -301,7 +304,7 @@
   align-items: center;
   gap: 16px;
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--text-sub, #64748b);
   font-weight: 500;
 }
 
@@ -318,193 +321,59 @@
   display: inline-block;
 }
 
-/* 常见编程语言专属颜色指示点 */
 .language-color.python { background-color: #3572A5; }
 .language-color.julia { background-color: #a270d3; }
 .language-color.html-js { background-color: #f1e05a; }
 
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* 按钮效果 */
 .github-btn {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--text-main, #0f172a);
   text-decoration: none;
   padding: 6px 14px;
   border-radius: 6px;
-  background-color: #f8fafc;
-  border: 1px solid #cbd5e1;
+  background-color: var(--tag-bg, #f8fafc);
+  border: 1px solid var(--card-border, #cbd5e1);
   transition: all 0.2s ease;
 }
 
 .github-btn:hover {
-  background-color: #0f172a;
-  color: #ffffff;
-  border-color: #0f172a;
+  background-color: var(--text-main, #0f172a);
+  color: var(--bg-color, #ffffff);
 }
 
-/* 响应式调整 */
-@media (max-width: 800px) {
-  .github-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* =========================================================
-         Beyond Code专区自定义自适应样式
-========================================================= */
-      
-      .hobby-section {
-        margin-bottom: 50px;
-      }
-
-      .hobby-section-title {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 16px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border-bottom: 2px solid #e2e8f0;
-        padding-bottom: 10px;
-      }
-
-      /* 乒乓球经历故事卡片排版 */
-      .story-card {
-        background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        margin-bottom: 30px;
-      }
-
-      .story-card h3 {
-        margin: 0;
-        font-size: 1.3rem;
-        color: #1e293b;
-      }
-
-      .story-card p {
-        margin: 0;
-        color: #4b5563;
-        line-height: 1.6;
-        font-size: 1rem;
-      }
-
-      /* 风火轮/收藏网格 */
-      .collection-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        margin-top: 20px;
-      }
-
-      .collect-item {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .collect-item:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-      }
-
-      .collect-img-wrapper {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        background-color: #0f172a;
-        overflow: hidden;
-      }
-
-      .collect-img-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-
-      .collect-item:hover .collect-img-wrapper img {
-        transform: scale(1.05);
-      }
-
-      .collect-info {
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .collect-info h4 {
-        margin: 0;
-        font-size: 1.05rem;
-        color: #0f172a;
-      }
-
-      .collect-info p {
-        margin: 0;
-        font-size: 0.85rem;
-        color: #64748b;
-        line-height: 1.4;
-      }
-
-      /* 响应式断点 */
-      @media (max-width: 1000px) {
-        .collection-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 600px) {
-        .collection-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* =========================================================
-   CUS Torino Showcase - 沉浸式浏览器模拟器卡片样式
+   3. 独立恢复：CUS Torino Safari 风格展示模块
 ========================================================= */
 
 .cus-showcase-card {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  border: 1px solid #334155;
-  border-radius: 20px;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .cus-showcase-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 48px rgba(37, 99, 235, 0.2);
-  border-color: #3b82f6;
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12);
+  border-color: #2563eb;
 }
 
-/* 伪浏览器顶部控制栏 (Mac 风格) */
+/* Safari 顶部控制栏 (Light) */
 .browser-header {
-  background-color: #1e293b;
+  background-color: #e1e4e8;
   padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid #d0d7de;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .browser-dots {
@@ -513,45 +382,49 @@
 }
 
 .browser-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.15);
 }
-.browser-dot.red { background-color: #ef4444; }
-.browser-dot.yellow { background-color: #f59e0b; }
-.browser-dot.green { background-color: #10b981; }
+.browser-dot.red { background-color: #ff5f56; border: 1px solid #e0443e; }
+.browser-dot.yellow { background-color: #ffbd2e; border: 1px solid #dea123; }
+.browser-dot.green { background-color: #27c93f; border: 1px solid #1aab29; }
 
 .browser-url-bar {
-  background-color: #0f172a;
-  color: #94a3b8;
+  background-color: #ffffff;
+  color: #57606a;
   font-family: monospace;
   font-size: 0.75rem;
-  padding: 4px 16px;
+  padding: 5px 16px;
   border-radius: 6px;
-  border: 1px solid #334155;
+  border: 1px solid #d0d7de;
   width: 50%;
   text-align: center;
   letter-spacing: 0.5px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .browser-badge {
-  background-color: rgba(59, 130, 246, 0.2);
-  color: #60a5fa;
+  background-color: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
   font-size: 0.7rem;
   font-weight: 700;
   padding: 3px 10px;
   border-radius: 12px;
-  border: 1px solid rgba(59, 130, 246, 0.4);
+  border: 1px solid rgba(37, 99, 235, 0.2);
   text-transform: uppercase;
 }
 
-/* 浏览器主体内容区（左侧截图/预览，右侧文字和亮点） */
+/* Safari 浏览器主体内容区 */
 .browser-body-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 24px;
   padding: 30px;
   align-items: center;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
 }
 
 .browser-preview-wrapper {
@@ -559,9 +432,10 @@
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #334155;
+  border: 1px solid #d0d7de;
   background-color: #000;
   aspect-ratio: 16 / 10;
+  transition: border-color 0.3s ease;
 }
 
 .browser-preview-wrapper img,
@@ -576,29 +450,26 @@
   transform: scale(1.03);
 }
 
-/* 右侧详情与指标 */
 .browser-content-side {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  color: #ffffff;
 }
 
 .browser-content-side h3 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #f8fafc;
+  color: var(--text-main, #0f172a);
 }
 
 .browser-content-side p {
   margin: 0;
-  color: #94a3b8;
+  color: var(--text-sub, #64748b);
   font-size: 0.9rem;
   line-height: 1.6;
 }
 
-/* 核心特性胶囊点 */
 .feature-pills {
   display: flex;
   flex-wrap: wrap;
@@ -608,14 +479,13 @@
 
 .feature-pill {
   font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.08);
-  color: #cbd5e1;
+  background: var(--tag-bg, #f1f5f9);
+  color: var(--tag-text, #334155);
   padding: 4px 10px;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--card-border, #e2e8f0);
 }
 
-/* 炫酷跳转按钮组 */
 .browser-actions {
   display: flex;
   gap: 12px;
@@ -644,8 +514,8 @@
 
 .btn-ghost {
   background: transparent;
-  color: #cbd5e1;
-  border: 1px solid #475569;
+  color: var(--text-main, #0f172a);
+  border: 1px solid var(--card-border, #cbd5e1);
   padding: 10px 20px;
   border-radius: 8px;
   text-decoration: none;
@@ -658,13 +528,66 @@
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
-  border-color: #94a3b8;
+  background: var(--tag-bg, rgba(0, 0, 0, 0.05));
+  border-color: var(--text-main, #0f172a);
 }
 
-/* 响应式适配 */
+
+/* =========================================================
+   4. 夜间模式 (.dark-theme) 下的完美适配
+========================================================= */
+
+body.dark-theme .cus-showcase-card {
+  background: #161b22 !important;
+  border-color: #30363d !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .cus-showcase-card .browser-header {
+  background-color: #21262d !important;
+  border-bottom: 1px solid #30363d !important;
+}
+
+body.dark-theme .cus-showcase-card .browser-url-bar {
+  background-color: #0d1117 !important;
+  color: #8b949e !important;
+  border-color: #30363d !important;
+}
+
+body.dark-theme .cus-showcase-card .browser-badge {
+  background-color: rgba(59, 130, 246, 0.2) !important;
+  color: #60a5fa !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+body.dark-theme .cus-showcase-card .browser-body-grid {
+  background-color: #0f172a !important;
+}
+
+body.dark-theme .cus-showcase-card .browser-preview-wrapper {
+  border-color: #30363d !important;
+}
+
+body.dark-theme .cus-showcase-card .btn-ghost {
+  color: #cbd5e1 !important;
+  border-color: #475569 !important;
+}
+
+body.dark-theme .cus-showcase-card .btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border-color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   Responsive Breakpoints
+========================================================= */
+
 @media (max-width: 900px) {
+  .projects-grid, .github-grid {
+    grid-template-columns: 1fr;
+  }
   .browser-body-grid {
     grid-template-columns: 1fr;
     padding: 20px;
