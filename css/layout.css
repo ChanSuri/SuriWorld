@@ -241,17 +241,29 @@ body {
 }
 
 #portfolio-header-image-container {
-  flex-basis: 45%;
+  flex-basis: 40% !important; 
+  max-width: 380px !important; 
+  margin: 0 auto;               /* 在移动端居中显示 */
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .portfolio-header-image {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 5 !important; /* 💡 强制固定高级的证件/艺术写真黄金比例（如 4:5 或 1:1），防止图片过高 */
+  border-radius: 16px !important; /* 现代苹果风格的优雅大圆角 */
+  object-fit: cover !important;   /* 完美裁剪填充，绝不变形 */
+  border: 1px solid var(--card-border, #e2e8f0) !important;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12); /* 悬浮立体感阴影 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 鼠标悬停时的微浮动动效 */
+.portfolio-header-image:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.18);
 }
 
 #portfolio-header-text-container {
@@ -1165,4 +1177,146 @@ body.dark-theme .button .right-arrow-icon {
 
 body.dark-theme .button:hover .right-arrow-icon {
   filter: brightness(0) !important;
+}
+
+/* =========================================================
+   Mobile Adaptive Responsive Architecture (手机端自适应系统)
+========================================================= */
+
+/* 📱 1. 平板与大屏手机适配 (≤ 768px) */
+@media (max-width: 768px) {
+
+  /* 顶部 Navbar 调整为紧凑型 */
+  .navbar {
+    height: auto !important;
+    padding: 14px 20px !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    position: fixed;
+  }
+
+  .nav-title {
+    font-size: 1.2rem !important; /* 缩小像素标题字体 */
+  }
+
+  .pixel-icon {
+    font-size: 1.4rem;
+  }
+
+  .pixel-blink {
+    font-size: 1.2rem;
+  }
+
+  /* 街机 Press Start 按钮在手机上缩小间距 */
+  .navbar .button.pixel-arcade-btn {
+    padding: 8px 14px !important;
+    font-size: 0.55rem !important;
+  }
+
+  /* 主体内容上边距缩减，防止产生巨大空白 */
+  #main-content {
+    margin: 140px auto 40px auto !important;
+    padding: 0 16px !important;
+    gap: 32px !important;
+  }
+
+  /* Hero 个人介绍区域：从左右并排改为上下垂直单列 */
+  #portfolio-header {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  #portfolio-header-image-container,
+  #portfolio-header-text-container {
+    flex-basis: 100% !important;
+    width: 100% !important;
+  }
+
+  .header-text .main-title {
+    font-size: 2rem !important; /* 缩减手机标题字号 */
+  }
+
+  .typing-text-wrapper {
+    font-size: 1.25rem !important;
+  }
+
+  /* About 区域与 Terminal 控制台变为单列 */
+  .about-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* 项目与作品网格：全部改为单列铺满 */
+  .projects-container,
+  .projects-grid,
+  .github-grid,
+  .gallery-grid,
+  .video-grid,
+  .project-gallery-content {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Safari CUS 浏览器大卡片内网格改为单列 */
+  .browser-body-grid {
+    grid-template-columns: 1fr !important;
+    padding: 18px !important;
+    gap: 16px !important;
+  }
+
+  /* 悬浮导航控制塔：手机端靠右下角排列，防止遮挡正文 */
+  .floating-nav-container {
+    top: auto !important;
+    bottom: 20px !important;
+    right: 16px !important;
+    transform: none !important;
+    gap: 8px !important;
+  }
+
+  .float-btn {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .float-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* 页脚在手机端居中垂直排列 */
+  .footer-content {
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 0 16px !important;
+    text-align: center !important;
+  }
+}
+
+
+/* 📱 2. 小屏手机极窄适配 (≤ 480px) */
+@media (max-width: 480px) {
+  .nav-title {
+    font-size: 0.95rem !important; /* 极窄屏幕防止标题折行溢出 */
+  }
+
+  .header-text .main-title {
+    font-size: 1.65rem !important;
+  }
+
+  .identity-tags .tag {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+  }
+
+  .tech-terminal {
+    font-size: 0.75rem !important; /* 调整手机终端字体大小 */
+  }
+
+  .terminal-body {
+    padding: 12px !important;
+  }
+}
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
 }
